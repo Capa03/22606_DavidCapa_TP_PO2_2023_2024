@@ -35,6 +35,16 @@ public class WSModel {
     }
 
     /**
+     * Communicates selected position
+     *
+     * @param position The user's selected position
+     */
+    public void positionSelected(Position position) {
+        String word = textInPosition(position);
+
+    }
+
+    /**
      * Get the text in a position
      * @param position  position
      * @return  the text in the position
@@ -43,13 +53,13 @@ public class WSModel {
         return this.lettersGrid.get(position.line()).get(position.col());
     }
 
-
     /**
      * Check if all words were found
      * @return  true if all words were found
      */
     public boolean allWordsWereFound() {
         // TODO: implement this method
+
         return true;
     }
 
@@ -60,6 +70,7 @@ public class WSModel {
      */
     public String wordFound(String word) {
         // TODO implement this method
+
         return word;
     }
 

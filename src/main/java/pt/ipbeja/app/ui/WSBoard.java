@@ -2,14 +2,13 @@ package pt.ipbeja.app.ui;
 
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import pt.ipbeja.app.model.MessageToUI;
-import pt.ipbeja.app.model.Position;
-import pt.ipbeja.app.model.WSModel;
-import pt.ipbeja.app.model.WSView;
+import pt.ipbeja.app.model.*;
 
 
 /**
@@ -35,11 +34,17 @@ public class WSBoard extends GridPane implements WSView {
     private void buildGUI() {
         assert (this.wsModel != null);
 
+        EventHandler<ActionEvent> actionEventHandler = event -> {
+            Button button = (Button) event.getSource();
+            wsModel.positionSelected(new Position(getRowIndex(button), getColumnIndex(button)));
+        };
         // create one label for each position
         for (int line = 0; line < this.wsModel.nLines(); line++) {
             for (int col = 0; col < this.wsModel.nCols(); col++) {
+
                 String textForButton = this.wsModel.textInPosition(new Position(line, col));
                 Button button = new Button(textForButton);
+                button.setOnAction(actionEventHandler);
                 button.setMinWidth(SQUARE_SIZE);
                 button.setMinHeight(SQUARE_SIZE);
                 this.add(button, col, line); // add button to GridPane
@@ -47,6 +52,7 @@ public class WSBoard extends GridPane implements WSView {
         }
         this.requestFocus();
     }
+
 
     /**
      * Can be optimized using an additional matrix with all the buttons
@@ -85,5 +91,22 @@ public class WSBoard extends GridPane implements WSView {
             alert.showAndWait();
             System.exit(0);
         }
+    }
+
+
+    ///////////////////////////////// UI MESSAGE /////////////////////////
+    @Override
+    public void allWordsWereFound() {
+
+    }
+
+    @Override
+    public void wordFound() {
+
+    }
+
+    @Override
+    public void wordWithWildcardFound() {
+
     }
 }

@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Files added" />
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Button Implementation">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/StartWordSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/StartWordSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,19 +31,27 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
         <option name="useMavenConfig" value="false" />
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2fjEEguS4xvf0u4iBOTuS2cYf9E" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,9 +64,9 @@
     "JUnit.WSModelTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "1-get-selected-letter",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Users/Capa/Desktop/Po2/PO2",
+    "last_opened_file_path": "/home/capa/Desktop/PO2/Projeto/PO2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,7 +76,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.WSModelTest">
+  <component name="RunManager" selected="Application.StartWordSearch">
     <configuration name="StartWordSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pt.ipbeja.app.ui.StartWordSearch" />
       <module name="22606_DavidCapa_TP_PO2_2023_2024" />
@@ -87,15 +107,16 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WSModelTest" />
         <item itemvalue="Application.StartWordSearch" />
+        <item itemvalue="JUnit.WSModelTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -108,6 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1714305978624</updated>
       <workItem from="1714305979670" duration="1016000" />
+      <workItem from="1714942573031" duration="3373000" />
     </task>
     <task id="LOCAL-00001" summary="Files added">
       <option name="closed" value="true" />
@@ -128,7 +150,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -136,6 +170,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Files added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Files added" />
+    <MESSAGE value="Button Implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Button Implementation" />
   </component>
 </project>
