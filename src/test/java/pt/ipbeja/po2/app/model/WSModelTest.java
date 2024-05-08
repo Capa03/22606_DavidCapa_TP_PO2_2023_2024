@@ -43,6 +43,21 @@ class WSModelTest {
             public void update(MessageToUI message) {
                 // do nothing
             }
+
+            @Override
+            public void allWordsWereFound() {
+
+            }
+
+            @Override
+            public void wordFound() {
+
+            }
+
+            @Override
+            public void wordWithWildcardFound() {
+
+            }
         });
     }
 }

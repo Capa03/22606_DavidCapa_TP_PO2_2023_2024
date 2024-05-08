@@ -28,8 +28,6 @@ public class StartWordSearch extends Application {
 
         WSBoard WSBoard = new WSBoard(WSModel);
         primaryStage.setScene(new Scene(WSBoard));
-        System.out.println(WSBoard.getButton(1,1));
-        System.out.println(WSModel.textInPosition(new Position(1,1)));
         WSModel.registerView(WSBoard);
         WSBoard.requestFocus(); // to remove focus from first button
         primaryStage.show();

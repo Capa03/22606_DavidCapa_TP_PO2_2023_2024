@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Button Implementation">
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Passed the value of the clicked button position into model">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/StartWordSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/StartWordSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +37,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Capa03&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Capa03/PO2.git&quot;,
+    &quot;accountId&quot;: &quot;28ce1384-cc51-4b12-b49f-4fa684fb161b&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -64,7 +72,7 @@
     "JUnit.WSModelTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "1-get-selected-letter",
+    "git-widget-placeholder": "3-implement-wordfound-and-allwordswerefound-wsmodel",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/capa/Desktop/PO2/Projeto/PO2",
     "node.js.detected.package.eslint": "true",
@@ -129,7 +137,12 @@
       <option name="presentableId" value="Default" />
       <updated>1714305978624</updated>
       <workItem from="1714305979670" duration="1016000" />
-      <workItem from="1714942573031" duration="3373000" />
+      <workItem from="1714942573031" duration="6558000" />
+      <workItem from="1715007170871" duration="5196000" />
+      <workItem from="1715071277919" duration="1441000" />
+      <workItem from="1715119697284" duration="2779000" />
+      <workItem from="1715123445835" duration="985000" />
+      <workItem from="1715161739900" duration="954000" />
     </task>
     <task id="LOCAL-00001" summary="Files added">
       <option name="closed" value="true" />
@@ -139,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714306889786</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Passed the value of the clicked button position into model">
+      <option name="closed" value="true" />
+      <created>1714946278762</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714946278762</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,7 +177,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="1-get-selected-letter" />
                       </list>
                     </value>
                   </entry>
@@ -171,6 +192,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Files added" />
     <MESSAGE value="Button Implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Button Implementation" />
+    <MESSAGE value="Passed the value of the clicked button position into model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Passed the value of the clicked button position into model" />
   </component>
 </project>

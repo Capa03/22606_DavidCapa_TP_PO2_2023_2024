@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class WSModel {
 
-
     // The following matrix could also be List<List<Character>>
     // for a more complex game, it should be a List<List<Cell>>
     // where Letter is a class with the letter and other attributes
     private final List<List<String>> lettersGrid;
     private WSView wsView;
+    private Position previousButtonPosition;
 
     public WSModel(String boardContent) {
         this.lettersGrid = new ArrayList<>();
@@ -37,12 +37,39 @@ public class WSModel {
     /**
      * Communicates selected position
      *
-     * @param position The user's selected position
+     * @param currentPosition The user's selected position
      */
-    public void positionSelected(Position position) {
-        String word = textInPosition(position);
-
+    public void positionSelected(Position currentPosition) {
+        String word = "IF IS NULL";
+        if(this.previousButtonPosition != null){
+           word =  this.checkWord(this.previousButtonPosition, currentPosition);
+        }
+        System.out.println(word);
+        this.previousButtonPosition = currentPosition;
     }
+
+    private String checkWord(Position previousPosition, Position currentPosition){
+        StringBuilder word = new StringBuilder();
+        //Loop through the button interval
+        for(int i = previousPosition.line(); i <= currentPosition.line(); i++){
+            for(int j = previousPosition.col(); j <= currentPosition.col(); j++){
+                word.append(this.lettersGrid.get(i).get(j));
+            }
+        }
+        this.previousButtonPosition = null;
+        return word.toString();
+    }
+
+
+    /**
+     * Check if the word is in the board
+     * @param word
+     * @return true if the word is in the board
+     */
+    public String wordFound(String word) {
+        return word;
+    }
+
 
     /**
      * Get the text in a position
@@ -59,20 +86,12 @@ public class WSModel {
      */
     public boolean allWordsWereFound() {
         // TODO: implement this method
-
         return true;
     }
 
-    /**
-     * Check if the word is in the board
-     * @param word
-     * @return true if the word is in the board
-     */
-    public String wordFound(String word) {
-        // TODO implement this method
 
-        return word;
-    }
+
+
 
     /**
      * Check if the word with wildcard is in the board
