@@ -17,8 +17,9 @@ public class WSModel {
     private final List<List<String>> lettersGrid;
     private WSView wsView;
     private Position previousButtonPosition;
-
+    private final BoardContent boardContent;
     public WSModel(String boardContent) {
+        this.boardContent = new BoardContent(boardContent);
         this.lettersGrid = new ArrayList<>();
         lettersGrid.add(new ArrayList<>());
         for(char c : boardContent.toCharArray()) {
@@ -40,26 +41,35 @@ public class WSModel {
      * @param currentPosition The user's selected position
      */
     public void positionSelected(Position currentPosition) {
-        String word = "IF IS NULL";
+
         if(this.previousButtonPosition != null){
-           word =  this.checkWord(this.previousButtonPosition, currentPosition);
+           String word = this.checkWord(this.previousButtonPosition, currentPosition);
+            System.out.println(this.wordFound(word));
         }
-        System.out.println(word);
+
         this.previousButtonPosition = currentPosition;
     }
 
+    /**
+     * Checks the Word in the given interval position
+     *
+     * @param previousPosition The user's first selected position
+     *
+     * @param currentPosition The user's second selected position
+     */
     private String checkWord(Position previousPosition, Position currentPosition){
         StringBuilder word = new StringBuilder();
         //Loop through the button interval
-        for(int i = previousPosition.line(); i <= currentPosition.line(); i++){
-            for(int j = previousPosition.col(); j <= currentPosition.col(); j++){
-                word.append(this.lettersGrid.get(i).get(j));
+        for(int line = previousPosition.line(); line <= currentPosition.line(); line++){
+            for(int col = previousPosition.col(); col <= currentPosition.col(); col++){
+                word.append(this.textInPosition(new Position(line,col)));
+                System.out.println("Line " + line + " col " + col + " word " + this.textInPosition(new Position(line,col)));
             }
         }
+        // Reset previous position
         this.previousButtonPosition = null;
         return word.toString();
     }
-
 
     /**
      * Check if the word is in the board
@@ -67,7 +77,12 @@ public class WSModel {
      * @return true if the word is in the board
      */
     public String wordFound(String word) {
-        return word;
+        String boardContent = this.boardContent.getBoardContent();
+
+        if(boardContent.contains(word)){
+            return "Match: " + word;
+        }
+        return "Not Match";
     }
 
 
@@ -88,8 +103,6 @@ public class WSModel {
         // TODO: implement this method
         return true;
     }
-
-
 
 
 
