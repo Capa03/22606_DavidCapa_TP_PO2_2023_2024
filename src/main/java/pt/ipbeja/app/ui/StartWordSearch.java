@@ -3,6 +3,7 @@ package pt.ipbeja.app.ui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pt.ipbeja.app.model.BoardContent;
 import pt.ipbeja.app.model.Position;
 import pt.ipbeja.app.model.WSModel;
 
@@ -15,13 +16,14 @@ public class StartWordSearch extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        BoardContent board = new BoardContent();
 
         final String boardContent =
                 """
                 CASAIAED
-                FFWFMERW
+                GALINHAI
                 WIQFELAA
-                OFLFESFI
+                OFLFGATO
                 EFFAFFPP""";
 
         WSModel WSModel = new WSModel(boardContent);

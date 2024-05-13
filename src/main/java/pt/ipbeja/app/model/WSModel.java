@@ -3,6 +3,7 @@ package pt.ipbeja.app.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Game model
@@ -15,11 +16,15 @@ public class WSModel {
     // for a more complex game, it should be a List<List<Cell>>
     // where Letter is a class with the letter and other attributes
     private final List<List<String>> lettersGrid;
+    private List<String> wordsFound;
     private WSView wsView;
     private Position previousButtonPosition;
     private final BoardContent boardContent;
+
+
     public WSModel(String boardContent) {
-        this.boardContent = new BoardContent(boardContent);
+        this.boardContent = new BoardContent();
+        this.wordsFound = new ArrayList<>();
         this.lettersGrid = new ArrayList<>();
         lettersGrid.add(new ArrayList<>());
         for(char c : boardContent.toCharArray()) {
@@ -41,12 +46,15 @@ public class WSModel {
      * @param currentPosition The user's selected position
      */
     public void positionSelected(Position currentPosition) {
-
         if(this.previousButtonPosition != null){
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
-            System.out.println(this.wordFound(word));
+           word = this.wordFound(word);
+            System.out.println(word);
+            if(!word.equals("Not Match")){
+                this.wordsFound.add(word);
+                this.allWordsWereFound();
+            }
         }
-
         this.previousButtonPosition = currentPosition;
     }
 
@@ -77,14 +85,12 @@ public class WSModel {
      * @return true if the word is in the board
      */
     public String wordFound(String word) {
-        String boardContent = this.boardContent.getBoardContent();
 
-        if(boardContent.contains(word)){
+        if(boardContent.getSolutions().get("easy").contains(word)){
             return "Match: " + word;
         }
         return "Not Match";
     }
-
 
     /**
      * Get the text in a position
@@ -101,9 +107,10 @@ public class WSModel {
      */
     public boolean allWordsWereFound() {
         // TODO: implement this method
+        Map<String, List<String>> solutions = this.boardContent.getSolutions();
+        System.out.println("All " + solutions.get("easy"));
         return true;
     }
-
 
 
     /**
