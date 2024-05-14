@@ -50,10 +50,12 @@ public class WSModel {
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
            word = this.wordFound(word);
             System.out.println(word);
-
-            wsView.update(new MessageToUI( this.positions,""));
+            if(!word.equals("Not Match")){
+                wsView.update(new MessageToUI( this.positions,""));
+            }
 
         }
+        this.positions.clear();
         this.previousButtonPosition = currentPosition;
     }
 
@@ -115,7 +117,7 @@ public class WSModel {
     /**
      * Check if the word with wildcard is in the board
      * @param word
-     * @return  true if the word with wildcard is in the board
+     * @return true if the word with wildcard is in the board
      */
     public String wordWithWildcardFound(String word) {
         // TODO implement this method
