@@ -1,17 +1,18 @@
 package pt.ipbeja.app.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class BoardContent {
 
     private String boardContent;
     private List<String> easy ;
-
     private Map<String,List<String>> solutions;
-    private String gameLevel;
+
 
     public BoardContent() {
         this.solutions = new HashMap<>();
@@ -23,12 +24,12 @@ public class BoardContent {
     }
 
     public String getBoardContent() {
-        return this.boardContent;
+        //TODO Read File
+        System.out.println(this.readFile());
+        return this.readFile().toString();
     }
 
-    public String gameLevel(){
-        return this.gameLevel;
-    }
+
 
     private void setValues(){
         this.easy = new ArrayList<>();
@@ -42,4 +43,22 @@ public class BoardContent {
         this.solutions.put("easy",easy);
     }
 
+
+    public static String readFile() {
+        StringBuilder formattedContent = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader("/home/capa/Desktop/PO2/Projeto/PO2/src/main/resources/words.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Trim the line and add it to the formatted content with a newline character
+                formattedContent.append(line.trim()).append("\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        // Remove the trailing newline character if it exists
+        if (formattedContent.length() > 0) {
+            formattedContent.setLength(formattedContent.length() - 1);
+        }
+        return formattedContent.toString();
+    }
 }

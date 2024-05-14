@@ -36,6 +36,7 @@ public class WSBoard extends GridPane implements WSView {
 
         EventHandler<ActionEvent> actionEventHandler = event -> {
             Button button = (Button) event.getSource();
+            button.setStyle("-fx-background-color: #FFFF00");
             wsModel.positionSelected(new Position(getRowIndex(button), getColumnIndex(button)));
         };
         // create one label for each position
@@ -92,6 +93,4 @@ public class WSBoard extends GridPane implements WSView {
             System.exit(0);
         }
     }
-
-
 }

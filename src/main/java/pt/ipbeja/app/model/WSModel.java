@@ -45,6 +45,8 @@ public class WSModel {
      * @param currentPosition The user's selected position
      */
     public void positionSelected(Position currentPosition) {
+        this.boardContent.getBoardContent();
+        System.out.println(this.lettersGrid);
         if(this.previousButtonPosition != null){
 
            String word = this.checkWord(this.previousButtonPosition, currentPosition);

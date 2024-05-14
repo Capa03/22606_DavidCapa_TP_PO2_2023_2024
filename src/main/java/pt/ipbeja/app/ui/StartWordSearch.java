@@ -18,6 +18,7 @@ public class StartWordSearch extends Application {
     public void start(Stage primaryStage) {
         BoardContent board = new BoardContent();
 
+
         final String boardContent =
                 """
                 CASAIAED
@@ -26,12 +27,10 @@ public class StartWordSearch extends Application {
                 OFLFGATO
                 EFFAFFPP""";
 
-        WSModel WSModel = new WSModel(boardContent);
 
-        WSBoard WSBoard = new WSBoard(WSModel);
-        primaryStage.setScene(new Scene(WSBoard));
-        WSModel.registerView(WSBoard);
-        WSBoard.requestFocus(); // to remove focus from first button
+        Menu menu = new Menu(primaryStage, board.getBoardContent());
+        primaryStage.setScene(new Scene(menu));
+
         primaryStage.show();
     }
 
