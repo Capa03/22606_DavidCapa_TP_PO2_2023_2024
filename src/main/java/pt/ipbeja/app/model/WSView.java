@@ -9,9 +9,4 @@ public interface WSView {
 
     void update(MessageToUI messageToUI);
 
-    void allWordsWereFound();
-
-    void wordFound();
-
-    void wordWithWildcardFound();
 }

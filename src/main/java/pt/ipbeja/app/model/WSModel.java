@@ -1,9 +1,7 @@
 package pt.ipbeja.app.model;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Game model
@@ -50,9 +48,9 @@ public class WSModel {
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
            word = this.wordFound(word);
             System.out.println(word);
-            if(!word.equals("Not Match")){
-                this.wordsFound.add(word);
-                this.allWordsWereFound();
+            if(this.allWordsWereFound()){
+                System.out.println("All words Found");
+                //wsView.allWordsWereFound();
             }
         }
         this.previousButtonPosition = currentPosition;
@@ -85,8 +83,8 @@ public class WSModel {
      * @return true if the word is in the board
      */
     public String wordFound(String word) {
-
         if(boardContent.getSolutions().get("easy").contains(word)){
+            this.wordsFound.add(word);
             return "Match: " + word;
         }
         return "Not Match";
@@ -108,8 +106,7 @@ public class WSModel {
     public boolean allWordsWereFound() {
         // TODO: implement this method
         Map<String, List<String>> solutions = this.boardContent.getSolutions();
-        System.out.println("All " + solutions.get("easy"));
-        return true;
+        return solutions.get("easy").equals(this.wordsFound);
     }
 
 

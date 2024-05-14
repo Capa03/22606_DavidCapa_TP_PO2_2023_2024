@@ -33,7 +33,6 @@ public class BoardContent {
     private void setValues(){
         this.easy = new ArrayList<>();
         this.easy.add("CASA");
-        this.easy.add("CAO");
         this.easy.add("GALINHA");
         this.easy.add("GATO");
     }

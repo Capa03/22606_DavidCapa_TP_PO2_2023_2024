@@ -94,19 +94,4 @@ public class WSBoard extends GridPane implements WSView {
     }
 
 
-    ///////////////////////////////// UI MESSAGE /////////////////////////
-    @Override
-    public void allWordsWereFound() {
-
-    }
-
-    @Override
-    public void wordFound() {
-
-    }
-
-    @Override
-    public void wordWithWildcardFound() {
-
-    }
 }
