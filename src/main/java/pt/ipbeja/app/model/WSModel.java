@@ -18,10 +18,11 @@ public class WSModel {
     private WSView wsView;
     private Position previousButtonPosition;
     private final BoardContent boardContent;
-
+    private List<Position> positions;
 
     public WSModel(String boardContent) {
         this.boardContent = new BoardContent();
+        this.positions = new ArrayList<>();
         this.wordsFound = new ArrayList<>();
         this.lettersGrid = new ArrayList<>();
         lettersGrid.add(new ArrayList<>());
@@ -45,13 +46,13 @@ public class WSModel {
      */
     public void positionSelected(Position currentPosition) {
         if(this.previousButtonPosition != null){
+
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
            word = this.wordFound(word);
             System.out.println(word);
-            if(this.allWordsWereFound()){
-                System.out.println("All words Found");
-                //wsView.allWordsWereFound();
-            }
+
+            wsView.update(new MessageToUI( this.positions,""));
+
         }
         this.previousButtonPosition = currentPosition;
     }
@@ -68,6 +69,7 @@ public class WSModel {
         //Loop through the button interval
         for(int line = previousPosition.line(); line <= currentPosition.line(); line++){
             for(int col = previousPosition.col(); col <= currentPosition.col(); col++){
+                this.positions.add(new Position(line, col));
                 word.append(this.textInPosition(new Position(line,col)));
                 System.out.println("Line " + line + " col " + col + " word " + this.textInPosition(new Position(line,col)));
             }

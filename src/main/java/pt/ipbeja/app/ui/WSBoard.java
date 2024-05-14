@@ -81,7 +81,7 @@ public class WSBoard extends GridPane implements WSView {
     public void update(MessageToUI messageToUI) {
         for (Position p : messageToUI.positions()) {
             String s = this.wsModel.textInPosition(p);
-            this.getButton(p.line(), p.col()).setText(s);
+            this.getButton(p.line(), p.col()).setStyle("-fx-background-color: #00D100");
         }
         if (this.wsModel.allWordsWereFound()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
