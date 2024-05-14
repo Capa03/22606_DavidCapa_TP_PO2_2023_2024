@@ -17,17 +17,8 @@ public class StartWordSearch extends Application {
     @Override
     public void start(Stage primaryStage) {
         BoardContent board = new BoardContent();
-
-
-        final String boardContent =
-                """
-                CASAIAED
-                GALINHAI
-                WIQFELAA
-                OFLFGATO
-                EFFAFFPP""";
-
-
+        board.setBoardContent();
+        System.out.println(board.getBoardContent());
         Menu menu = new Menu(primaryStage, board.getBoardContent());
         primaryStage.setScene(new Scene(menu));
 

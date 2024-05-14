@@ -24,12 +24,52 @@ public class BoardContent {
     }
 
     public String getBoardContent() {
-        //TODO Read File
-        System.out.println(this.readFile());
-        return this.readFile().toString();
+     return generateBoard(boardContent,5);
     }
 
+    private final char[] LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    public  String generateBoard(String wordString, int size) {
+        // Split the input string into words
+        String[] words = wordString.split("\\s+"); // Assuming words are separated by whitespace
+
+        // Create a StringBuilder to build the board
+        StringBuilder board = new StringBuilder();
+
+        // Fill the board with random letters
+        Random random = new Random();
+        for (int row = 0; row < size; row++) {
+            String word = (row < words.length) ? words[row] : ""; // Get the word for the current row or an empty string if no more words
+            for (int col = 0; col < size; col++) {
+                char cell;
+                if (col < word.length()) {
+                    // If the position corresponds to a word, fill it with the word's character
+                    cell = word.charAt(col);
+                } else {
+                    // Otherwise, fill it with a random letter
+                    cell = getRandomLetter(random);
+                }
+                // Append the cell to the board
+                board.append(cell);
+            }
+            // Add newline character after each row except the last one
+            if (row < size - 1) {
+                board.append('\n');
+            }
+        }
+
+        return board.toString();
+    }
+
+    private char getRandomLetter(Random random) {
+        int index = random.nextInt(LETTERS.length);
+        return LETTERS[index];
+    }
+
+    //Set readFile to BoardContent
+    public void setBoardContent(){
+        this.boardContent = this.readFile();
+    }
 
     private void setValues(){
         this.easy = new ArrayList<>();
@@ -44,7 +84,7 @@ public class BoardContent {
     }
 
 
-    public static String readFile() {
+    private String readFile() {
         StringBuilder formattedContent = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader("/home/capa/Desktop/PO2/Projeto/PO2/src/main/resources/words.txt"))) {
             String line;
@@ -56,7 +96,7 @@ public class BoardContent {
             throw new RuntimeException(e);
         }
         // Remove the trailing newline character if it exists
-        if (formattedContent.length() > 0) {
+        if (!formattedContent.isEmpty()) {
             formattedContent.setLength(formattedContent.length() - 1);
         }
         return formattedContent.toString();
