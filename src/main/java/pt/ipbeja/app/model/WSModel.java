@@ -88,10 +88,22 @@ public class WSModel {
      * @return true if the word is in the board
      */
     public String wordFound(String word) {
-        if(boardContent.getSolutions().get("easy").contains(word)){
-            this.wordsFound.add(word);
-            return "Match: " + word;
+        List<String> solutions = boardContent.getSolutions().get("easy");
+
+        // Check each solution
+        for (String solution : solutions) {
+            // Split the solution into individual words
+            String[] words = solution.split("\\s+");
+
+            // Check each word in the solution
+            for (String w : words) {
+                if (w.equals(word)) {
+                    this.wordsFound.add(word);
+                    return "Match: " + word;
+                }
+            }
         }
+
         return "Not Match";
     }
 
@@ -109,11 +121,17 @@ public class WSModel {
      * @return  true if all words were found
      */
     public boolean allWordsWereFound() {
-        // TODO: implement this method
-        Map<String, List<String>> solutions = this.boardContent.getSolutions();
-        return solutions.get("easy").equals(this.wordsFound);
-    }
+        List<String> solutions = this.boardContent.getSolutions().get("easy");
 
+        Set<String> allSolutionsWords = new HashSet<>();
+        for (String solution : solutions) {
+            allSolutionsWords.addAll(Arrays.asList(solution.split("\\s+")));
+        }
+
+        // Check if all words found are contained in the set of all solutions words
+        return this.wordsFound.size() == allSolutionsWords.size() &&
+                allSolutionsWords.containsAll(this.wordsFound);
+    }
 
     /**
      * Check if the word with wildcard is in the board

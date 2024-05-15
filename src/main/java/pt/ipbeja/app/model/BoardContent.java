@@ -3,8 +3,6 @@ package pt.ipbeja.app.model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class BoardContent {
@@ -16,6 +14,7 @@ public class BoardContent {
 
     public BoardContent() {
         this.solutions = new HashMap<>();
+        setBoardContent();
         setSolutions();
     }
 
@@ -24,7 +23,7 @@ public class BoardContent {
     }
 
     public String getBoardContent() {
-     return generateBoard(boardContent,5);
+     return generateBoard(boardContent,10);
     }
 
     private final char[] LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
@@ -68,18 +67,12 @@ public class BoardContent {
 
     //Set readFile to BoardContent
     public void setBoardContent(){
-        this.boardContent = this.readFile();
-    }
-
-    private void setValues(){
         this.easy = new ArrayList<>();
-        this.easy.add("CASA");
-        this.easy.add("GALINHA");
-        this.easy.add("GATO");
+        this.boardContent = this.readFile();
+        this.easy.add(this.boardContent);
     }
 
     private void setSolutions() {
-        this.setValues();
         this.solutions.put("easy",easy);
     }
 
