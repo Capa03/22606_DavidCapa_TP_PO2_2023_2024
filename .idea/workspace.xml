@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Button Implementation">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Implemented random matrix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/StartWordSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/StartWordSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/words.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaFXApplication" />
         <option value="Class" />
       </list>
     </option>
@@ -41,6 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Capa03&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Capa03/PO2.git&quot;,
+    &quot;accountId&quot;: &quot;28ce1384-cc51-4b12-b49f-4fa684fb161b&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -64,9 +70,9 @@
     "JUnit.WSModelTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "1-get-selected-letter",
+    "git-widget-placeholder": "3-implement-wordfound-and-allwordswerefound-wsmodel",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/capa/Desktop/PO2/Projeto/PO2",
+    "last_opened_file_path": "/home/capa/Desktop/RC2/Po2ProjV1-master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -129,7 +135,21 @@
       <option name="presentableId" value="Default" />
       <updated>1714305978624</updated>
       <workItem from="1714305979670" duration="1016000" />
-      <workItem from="1714942573031" duration="3373000" />
+      <workItem from="1714942573031" duration="6558000" />
+      <workItem from="1715007170871" duration="5196000" />
+      <workItem from="1715071277919" duration="1441000" />
+      <workItem from="1715119697284" duration="2779000" />
+      <workItem from="1715123445835" duration="985000" />
+      <workItem from="1715161739900" duration="4126000" />
+      <workItem from="1715536773888" duration="5254000" />
+      <workItem from="1715624593306" duration="23000" />
+      <workItem from="1715626907538" duration="17000" />
+      <workItem from="1715627187556" duration="8818000" />
+      <workItem from="1715638533427" duration="8010000" />
+      <workItem from="1715647223223" duration="902000" />
+      <workItem from="1715711922407" duration="6718000" />
+      <workItem from="1715722448140" duration="8009000" />
+      <workItem from="1715806231914" duration="3888000" />
     </task>
     <task id="LOCAL-00001" summary="Files added">
       <option name="closed" value="true" />
@@ -139,7 +159,79 @@
       <option name="project" value="LOCAL" />
       <updated>1714306889786</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Passed the value of the clicked button position into model">
+      <option name="closed" value="true" />
+      <created>1714946278762</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714946278762</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implemented checkWord()">
+      <option name="closed" value="true" />
+      <created>1715163023054</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715163023054</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactor of checkWord() and implemented wordFound()">
+      <option name="closed" value="true" />
+      <created>1715541426763</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715541426763</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed wordFound()">
+      <option name="closed" value="true" />
+      <created>1715642093653</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715642093653</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implemented AllWordsFound()">
+      <option name="closed" value="true" />
+      <created>1715645042662</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715645042662</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Implemented AllWordsFound()">
+      <option name="closed" value="true" />
+      <created>1715645064160</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715645064160</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Changed Button colors in UI and Finish game">
+      <option name="closed" value="true" />
+      <created>1715646248661</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715646248661</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed message to ui">
+      <option name="closed" value="true" />
+      <created>1715648080541</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715648080542</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Implemented readFile() in boardContentClass">
+      <option name="closed" value="true" />
+      <created>1715726450298</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715726450298</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,7 +248,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="3-implement-wordfound-and-allwordswerefound-wsmodel" />
                       </list>
                     </value>
                   </entry>
@@ -171,6 +263,33 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Files added" />
     <MESSAGE value="Button Implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Button Implementation" />
+    <MESSAGE value="Passed the value of the clicked button position into model" />
+    <MESSAGE value="Implemented checkWord()" />
+    <MESSAGE value="Refactor of checkWord() and implemented wordFound()" />
+    <MESSAGE value="Fixed wordFound()" />
+    <MESSAGE value="Implemented AllWordsFound()" />
+    <MESSAGE value="Changed Button colors in UI and Finish game" />
+    <MESSAGE value="Fixed message to ui" />
+    <MESSAGE value="Implemented readFile() in boardContentClass" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented readFile() in boardContentClass" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.lettersGrid.get(6)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

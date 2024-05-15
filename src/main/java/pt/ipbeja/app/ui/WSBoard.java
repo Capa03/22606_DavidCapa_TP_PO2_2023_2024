@@ -36,6 +36,7 @@ public class WSBoard extends GridPane implements WSView {
 
         EventHandler<ActionEvent> actionEventHandler = event -> {
             Button button = (Button) event.getSource();
+            button.setStyle("-fx-background-color: #FFFF00");
             wsModel.positionSelected(new Position(getRowIndex(button), getColumnIndex(button)));
         };
         // create one label for each position
@@ -81,7 +82,7 @@ public class WSBoard extends GridPane implements WSView {
     public void update(MessageToUI messageToUI) {
         for (Position p : messageToUI.positions()) {
             String s = this.wsModel.textInPosition(p);
-            this.getButton(p.line(), p.col()).setText(s);
+            this.getButton(p.line(), p.col()).setStyle("-fx-background-color: #00D100");
         }
         if (this.wsModel.allWordsWereFound()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -91,22 +92,5 @@ public class WSBoard extends GridPane implements WSView {
             alert.showAndWait();
             System.exit(0);
         }
-    }
-
-
-    ///////////////////////////////// UI MESSAGE /////////////////////////
-    @Override
-    public void allWordsWereFound() {
-
-    }
-
-    @Override
-    public void wordFound() {
-
-    }
-
-    @Override
-    public void wordWithWildcardFound() {
-
     }
 }

@@ -3,6 +3,7 @@ package pt.ipbeja.app.ui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pt.ipbeja.app.model.BoardContent;
 import pt.ipbeja.app.model.Position;
 import pt.ipbeja.app.model.WSModel;
 
@@ -15,23 +16,12 @@ public class StartWordSearch extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        BoardContent board = new BoardContent();
+        board.setBoardContent();
+        System.out.println(board.getBoardContent());
+        Menu menu = new Menu(primaryStage, board.getBoardContent());
+        primaryStage.setScene(new Scene(menu));
 
-        final String boardContent =
-                """
-                CASAIAED
-                FFWFMERW
-                WIQFELAA
-                OFLFESFI
-                EFFAFFPP""";
-
-        WSModel WSModel = new WSModel(boardContent);
-
-        WSBoard WSBoard = new WSBoard(WSModel);
-        primaryStage.setScene(new Scene(WSBoard));
-        System.out.println(WSBoard.getButton(1,1));
-        System.out.println(WSModel.textInPosition(new Position(1,1)));
-        WSModel.registerView(WSBoard);
-        WSBoard.requestFocus(); // to remove focus from first button
         primaryStage.show();
     }
 

@@ -43,6 +43,7 @@ class WSModelTest {
             public void update(MessageToUI message) {
                 // do nothing
             }
+
         });
     }
 }
