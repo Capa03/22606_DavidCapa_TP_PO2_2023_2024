@@ -16,10 +16,8 @@ public class StartWordSearch extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        BoardContent board = new BoardContent();
-        board.setBoardContent();
-        System.out.println(board.getBoardContent());
-        Menu menu = new Menu(primaryStage, board.getBoardContent());
+
+        Menu menu = new Menu(primaryStage);
         primaryStage.setScene(new Scene(menu));
 
         primaryStage.show();

@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Implemented random matrix">
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Refactored the solution functions and allWordsFounds()">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/StartWordSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
     "JUnit.WSModelTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "3-implement-wordfound-and-allwordswerefound-wsmodel",
+    "git-widget-placeholder": "5-implement-menu-ui-buttons",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/capa/Desktop/RC2/Po2ProjV1-master",
     "node.js.detected.package.eslint": "true",
@@ -149,7 +150,7 @@
       <workItem from="1715647223223" duration="902000" />
       <workItem from="1715711922407" duration="6718000" />
       <workItem from="1715722448140" duration="8009000" />
-      <workItem from="1715806231914" duration="3888000" />
+      <workItem from="1715806231914" duration="6768000" />
     </task>
     <task id="LOCAL-00001" summary="Files added">
       <option name="closed" value="true" />
@@ -231,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715726450298</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refactored the solution functions and allWordsFounds()">
+      <option name="closed" value="true" />
+      <created>1715810228836</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715810228836</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +280,8 @@
     <MESSAGE value="Changed Button colors in UI and Finish game" />
     <MESSAGE value="Fixed message to ui" />
     <MESSAGE value="Implemented readFile() in boardContentClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented readFile() in boardContentClass" />
+    <MESSAGE value="Refactored the solution functions and allWordsFounds()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored the solution functions and allWordsFounds()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
