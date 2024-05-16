@@ -52,12 +52,13 @@ public class WSModel {
            word = this.wordFound(word);
             System.out.println(word);
             if(!word.equals("Not Match")){
-                wsView.update(new MessageToUI( this.positions,""));
+                wsView.update(new MessageToUI( this.positions,"match"));
             }
-
+            this.positions.clear();
+            this.previousButtonPosition = null;
+        }else{
+            this.previousButtonPosition = currentPosition;
         }
-        this.positions.clear();
-        this.previousButtonPosition = currentPosition;
     }
 
     /**

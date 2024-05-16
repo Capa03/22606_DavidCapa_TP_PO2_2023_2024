@@ -1,7 +1,5 @@
 package pt.ipbeja.app.ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,36 +13,36 @@ import pt.ipbeja.app.model.BoardContent;
 import pt.ipbeja.app.model.WSModel;
 
 
-public class Menu extends GridPane {
+public class WSMenu extends GridPane {
     private Stage stage;
     private TextField inputField; // Declare inputField at the class level
 
-    public Menu(Stage stage) {
+    public WSMenu(Stage stage) {
         this.stage = stage;
         this.buildUI();
     }
 
     private void buildUI() {
-        // Create buttons
+
         Button buttonStart = new Button("Start");
         Button buttonLeaderBoard = new Button("Leaderboard");
         Button buttonQuit = new Button("Quit");
 
-        // Set button sizes
+
         buttonStart.setPrefSize(200, 50);
         buttonLeaderBoard.setPrefSize(200, 50);
         buttonQuit.setPrefSize(200, 50);
 
-        // Set event handlers
+
         buttonStart.setOnAction(event -> showSizeInputDialog());
         buttonQuit.setOnAction(event -> showQuitConfirmation());
 
-        // Add buttons to grid
+
         this.add(buttonStart, 0, 0);
         this.add(buttonLeaderBoard, 0, 1);
         this.add(buttonQuit, 0, 2);
 
-        // Create text field for size input
+
         inputField = new TextField();
 
         // Set padding and alignment
@@ -66,7 +64,6 @@ public class Menu extends GridPane {
                 if (!input.isEmpty() && input.matches("\\d+")) { // Check if input is not empty and contains only digits
                     startGame(Integer.parseInt(input));
                 } else {
-
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setTitle("Invalid Input");
                     errorAlert.setContentText("Please enter a valid number for the size.");

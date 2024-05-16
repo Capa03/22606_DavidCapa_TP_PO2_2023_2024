@@ -10,6 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import pt.ipbeja.app.model.*;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+
 
 /**
  * Game interface. Just a GridPane of buttons. No images. No menu.
@@ -19,7 +23,8 @@ import pt.ipbeja.app.model.*;
 public class WSBoard extends GridPane implements WSView {
     private final WSModel wsModel;
     private static final int SQUARE_SIZE = 80;
-
+    private final AtomicReference<Button> previousButton = new AtomicReference<>();
+    private final Set<Position> foundWordPositions = new HashSet<>();
     /**
      * Create a board with letters
      */
@@ -36,10 +41,27 @@ public class WSBoard extends GridPane implements WSView {
 
         EventHandler<ActionEvent> actionEventHandler = event -> {
             Button button = (Button) event.getSource();
-            button.setStyle("-fx-background-color: #FFFF00");
-            wsModel.positionSelected(new Position(getRowIndex(button), getColumnIndex(button)));
+            Position buttonPosition = new Position(getRowIndex(button), getColumnIndex(button));
+
+            if ("-fx-background-color: #FFFF00".equals(button.getStyle())) {
+                if (!foundWordPositions.contains(buttonPosition)) {
+                    button.setStyle("");
+                }
+                previousButton.set(null);
+            } else {
+                if (previousButton.get() != null) {
+                    Position previousButtonPosition = new Position(getRowIndex(previousButton.get()), getColumnIndex(previousButton.get()));
+                    if (!foundWordPositions.contains(previousButtonPosition)) {
+                        previousButton.get().setStyle("");
+                    }
+                }
+                button.setStyle("-fx-background-color: #FFFF00");
+                previousButton.set(button);
+            }
+
+            wsModel.positionSelected(buttonPosition);
         };
-        // create one label for each position
+
         for (int line = 0; line < this.wsModel.nLines(); line++) {
             for (int col = 0; col < this.wsModel.nCols(); col++) {
 
@@ -81,8 +103,11 @@ public class WSBoard extends GridPane implements WSView {
     @Override
     public void update(MessageToUI messageToUI) {
         for (Position p : messageToUI.positions()) {
-            String s = this.wsModel.textInPosition(p);
-            this.getButton(p.line(), p.col()).setStyle("-fx-background-color: #00D100");
+            //String s = this.wsModel.textInPosition(p);
+            Button button = this.getButton(p.line(), p.col());
+            button.setStyle("-fx-background-color: #00D100");
+            button.setDisable(true);
+            foundWordPositions.add(p);
         }
         if (this.wsModel.allWordsWereFound()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

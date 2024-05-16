@@ -3,9 +3,6 @@ package pt.ipbeja.app.ui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pt.ipbeja.app.model.BoardContent;
-import pt.ipbeja.app.model.Position;
-import pt.ipbeja.app.model.WSModel;
 
 /**
  * Start a game with a hardcoded board
@@ -17,8 +14,8 @@ public class StartWordSearch extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Menu menu = new Menu(primaryStage);
-        primaryStage.setScene(new Scene(menu));
+        WSMenu WSMenu = new WSMenu(primaryStage);
+        primaryStage.setScene(new Scene(WSMenu));
 
         primaryStage.show();
     }
