@@ -87,7 +87,7 @@ public class BoardContent {
 
     private String readFile() {
         StringBuilder formattedContent = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader("/home/capa/Desktop/PO2/Projeto/PO2/src/main/resources/words.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/words.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 // Trim the line and add it to the formatted content with a newline character

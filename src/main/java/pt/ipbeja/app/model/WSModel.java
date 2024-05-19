@@ -45,8 +45,14 @@ public class WSModel {
      * @param currentPosition The user's selected position
      */
     public void positionSelected(Position currentPosition) {
-
-        if(this.previousButtonPosition != null){
+        if (currentPosition == null) {
+            System.out.println("Position reset");
+            this.previousButtonPosition = null;
+            this.positions.clear();
+            return;
+        }
+        System.out.println("LETTER " + textInPosition(currentPosition));
+        if(this.previousButtonPosition != null ){
 
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
            word = this.wordFound(word);
@@ -55,10 +61,9 @@ public class WSModel {
                 wsView.update(new MessageToUI( this.positions,"match"));
             }
             this.positions.clear();
-            this.previousButtonPosition = null;
-        }else{
-            this.previousButtonPosition = currentPosition;
         }
+            this.previousButtonPosition = currentPosition;
+
     }
 
     /**
@@ -75,7 +80,7 @@ public class WSModel {
             for(int col = previousPosition.col(); col <= currentPosition.col(); col++){
                 this.positions.add(new Position(line, col));
                 word.append(this.textInPosition(new Position(line,col)));
-                System.out.println("Line " + line + " col " + col + " word " + this.textInPosition(new Position(line,col)));
+                //System.out.println("Line " + line + " col " + col + " word " + this.textInPosition(new Position(line,col)));
             }
         }
         // Reset previous position
@@ -104,7 +109,6 @@ public class WSModel {
                 }
             }
         }
-
         return "Not Match";
     }
 
