@@ -10,10 +10,18 @@ public class BoardContent {
     private String boardContent;
     private List<String> easy ;
     private Map<String,List<String>> solutions;
-
+    private final int SIZE;
 
     public BoardContent() {
         this.solutions = new HashMap<>();
+        this.SIZE = 5;
+        setBoardContent();
+        setSolutions();
+    }
+
+    public BoardContent(int SIZE) {
+        this.solutions = new HashMap<>();
+        this.SIZE = SIZE;
         setBoardContent();
         setSolutions();
     }
@@ -23,12 +31,12 @@ public class BoardContent {
     }
 
     public String getBoardContent() {
-     return generateBoard(boardContent,10);
+     return generateBoard(boardContent,this.SIZE);
     }
 
     private final char[] LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-    public  String generateBoard(String wordString, int size) {
+    private String generateBoard(String wordString, int size) {
         // Split the input string into words
         String[] words = wordString.split("\\s+"); // Assuming words are separated by whitespace
 
@@ -79,7 +87,7 @@ public class BoardContent {
 
     private String readFile() {
         StringBuilder formattedContent = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader("/home/capa/Desktop/PO2/Projeto/PO2/src/main/resources/words.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/words.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 // Trim the line and add it to the formatted content with a newline character
