@@ -2,10 +2,8 @@ package pt.ipbeja.app.ui;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -77,7 +75,7 @@ public class WSMenu extends GridPane {
 
     private void startGame(int SIZE) {
         // Print the size for debugging purposes
-        System.out.println("SIZE" + SIZE);
+        System.out.println("SIZE " + SIZE);
 
         // Initialize the board content and set the size of the board
         BoardContent board = new BoardContent(SIZE);
@@ -89,8 +87,25 @@ public class WSMenu extends GridPane {
         // Create the WSBoard with the model
         WSBoard wsBoard = new WSBoard(wsModel);
 
-        // Set the scene with the main layout from WSBoard which includes the board and the side panel
-        this.stage.setScene(new Scene(wsBoard.getMainLayout()));
+        // Create the menu bar
+        MenuBar menuBar = new MenuBar();
+        Menu gameMenu = new Menu("Game");
+        MenuItem restartMenuItem = new MenuItem("Restart");
+        MenuItem quitMenuItem = new MenuItem("Quit");
+
+        restartMenuItem.setOnAction(event -> showSizeInputDialog());
+        quitMenuItem.setOnAction(event -> showQuitConfirmation());
+
+        gameMenu.getItems().addAll(restartMenuItem, quitMenuItem);
+        menuBar.getMenus().add(gameMenu);
+
+        // Create a BorderPane to hold the menu bar and the game content
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(menuBar);
+        borderPane.setCenter(wsBoard.getMainLayout());
+
+        // Set the scene with the borderPane containing the menu and the game layout
+        this.stage.setScene(new Scene(borderPane));
 
         // Register the WSBoard view with the model
         wsModel.registerView(wsBoard);
