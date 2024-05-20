@@ -44,6 +44,11 @@ class WSModelTest {
                 // do nothing
             }
 
+            @Override
+            public void updateInfoLabel(String text) {
+
+            }
+
         });
     }
 }

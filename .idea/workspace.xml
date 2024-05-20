@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Implemented Input box to ask user for the Grid Size">
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Implemented sidePane to print the played movements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715810228836</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Implemented sidePane to print the played movements">
+      <option name="closed" value="true" />
+      <created>1716241428123</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716241428123</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +291,8 @@
     <MESSAGE value="Fixed message to ui" />
     <MESSAGE value="Implemented readFile() in boardContentClass" />
     <MESSAGE value="Refactored the solution functions and allWordsFounds()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored the solution functions and allWordsFounds()" />
+    <MESSAGE value="Implemented sidePane to print the played movements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented sidePane to print the played movements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

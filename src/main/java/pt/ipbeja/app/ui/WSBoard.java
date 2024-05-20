@@ -1,6 +1,5 @@
 package pt.ipbeja.app.ui;
 
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
@@ -27,19 +25,22 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @version 2024/04/14
  */
+
 public class WSBoard extends GridPane implements WSView {
+
     private final WSModel wsModel;
     private static final int SQUARE_SIZE = 80;
     private final AtomicReference<Button> previousButton = new AtomicReference<>();
     private final Set<Position> foundWordPositions = new HashSet<>();
-    private final Label infoLabel = new Label();
     private final VBox infoPanel = new VBox();
     private final TextArea movesTextArea = new TextArea();
+
     /**
      * Constructs a WSBoard with the given model.
      *
      * @param wsModel the model for the word search game
      */
+
     public WSBoard(WSModel wsModel) {
         this.wsModel = wsModel;
         this.buildGUI();
@@ -49,6 +50,7 @@ public class WSBoard extends GridPane implements WSView {
     /**
      * Builds the user interface for the word search game.
      */
+
     private void buildGUI() {
         assert (this.wsModel != null);
 
