@@ -81,6 +81,7 @@ public class WSModel {
                 this.positions.add(new Position(line, col));
                 word.append(this.textInPosition(new Position(line,col)));
                 //System.out.println("Line " + line + " col " + col + " word " + this.textInPosition(new Position(line,col)));
+
             }
         }
         // Reset previous position
@@ -105,6 +106,11 @@ public class WSModel {
             for (String w : words) {
                 if (w.equals(word)) {
                     this.wordsFound.add(word);
+                    StringBuilder message = new StringBuilder(word + " ");
+                    for (Position p : this.positions) {
+                        message.append(String.format("(%d, %c) ", p.line(), (char) ('A' + p.col())));
+                    }
+                    this.wsView.updateInfoLabel(message.toString());
                     return "Match: " + word;
                 }
             }

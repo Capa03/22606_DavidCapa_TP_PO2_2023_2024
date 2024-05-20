@@ -76,16 +76,29 @@ public class WSMenu extends GridPane {
     }
 
     private void startGame(int SIZE) {
-        //GOTO -> Board
+        // Print the size for debugging purposes
         System.out.println("SIZE" + SIZE);
 
+        // Initialize the board content and set the size of the board
         BoardContent board = new BoardContent(SIZE);
-        board.setBoardContent(); // Set the size of the board
-        WSModel WSModel = new WSModel(board.getBoardContent());
-        WSBoard WSBoard = new WSBoard(WSModel);
-        this.stage.setScene(new Scene(WSBoard));
-        WSModel.registerView(WSBoard);
-        WSBoard.requestFocus();
+        board.setBoardContent();
+
+        // Create the model with the board content
+        WSModel wsModel = new WSModel(board.getBoardContent());
+
+        // Create the WSBoard with the model
+        WSBoard wsBoard = new WSBoard(wsModel);
+
+        // Set the scene with the main layout from WSBoard which includes the board and the side panel
+        this.stage.setScene(new Scene(wsBoard.getMainLayout()));
+
+        // Register the WSBoard view with the model
+        wsModel.registerView(wsBoard);
+
+        // Request focus for WSBoard
+        wsBoard.requestFocus();
+
+        // Show the stage
         this.stage.show();
     }
 

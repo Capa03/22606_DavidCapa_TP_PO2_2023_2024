@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Implemented Input box to ask user for the Grid Size">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +74,7 @@
     "JUnit.WSModelTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "5-implement-menu-ui-buttons",
+    "git-widget-placeholder": "7-implement-side-game-ui",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/capa/Desktop/RC2/Po2ProjV1-master",
     "node.js.detected.package.eslint": "true",
@@ -292,11 +294,6 @@
           <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
