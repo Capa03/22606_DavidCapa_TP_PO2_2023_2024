@@ -1,6 +1,8 @@
 package pt.ipbeja.app.model;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -55,11 +57,13 @@ public class WSModel {
         if(this.previousButtonPosition != null ){
 
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
+
            word = this.wordFound(word);
             System.out.println(word);
             if(!word.equals("Not Match")){
                 wsView.update(new MessageToUI( this.positions,"match"));
             }
+
             this.positions.clear();
         }
             this.previousButtonPosition = currentPosition;
@@ -73,19 +77,27 @@ public class WSModel {
      *
      * @param currentPosition The user's second selected position
      */
-    private String checkWord(Position previousPosition, Position currentPosition){
+    private String checkWord(Position previousPosition, Position currentPosition) {
         StringBuilder word = new StringBuilder();
-        //Loop through the button interval
-        for(int line = previousPosition.line(); line <= currentPosition.line(); line++){
-            for(int col = previousPosition.col(); col <= currentPosition.col(); col++){
+        int startLine = Math.min(previousPosition.line(), currentPosition.line());
+        int endLine = Math.max(previousPosition.line(), currentPosition.line());
+        int startCol = Math.min(previousPosition.col(), currentPosition.col());
+        int endCol = Math.max(previousPosition.col(), currentPosition.col());
+
+        // Loop through the button interval
+        for (int line = startLine; line <= endLine; line++) {
+            for (int col = startCol; col <= endCol; col++) {
                 this.positions.add(new Position(line, col));
-                word.append(this.textInPosition(new Position(line,col)));
-                //System.out.println("Line " + line + " col " + col + " word " + this.textInPosition(new Position(line,col)));
+                word.append(this.textInPosition(new Position(line, col)));
             }
         }
         // Reset previous position
         this.previousButtonPosition = null;
         return word.toString();
+    }
+
+    public List<String> getWordsFound() {
+        return this.wordsFound;
     }
 
     /**
@@ -105,6 +117,11 @@ public class WSModel {
             for (String w : words) {
                 if (w.equals(word)) {
                     this.wordsFound.add(word);
+                    StringBuilder message = new StringBuilder(word + " ");
+                    for (Position p : this.positions) {
+                        message.append(String.format("(%d, %c) ", p.line(), (char) ('A' + p.col())));
+                    }
+                    this.wsView.updateInfoLabel(message.toString());
                     return "Match: " + word;
                 }
             }

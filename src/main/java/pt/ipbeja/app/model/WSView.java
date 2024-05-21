@@ -8,5 +8,5 @@ package pt.ipbeja.app.model;
 public interface WSView {
 
     void update(MessageToUI messageToUI);
-
+    void updateInfoLabel(String text);
 }

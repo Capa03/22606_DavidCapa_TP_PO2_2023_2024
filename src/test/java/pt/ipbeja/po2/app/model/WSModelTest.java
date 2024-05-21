@@ -13,6 +13,7 @@ class WSModelTest {
     @Test
     void testWordFound() {
         WSModel model = new WSModel("ACCD\nEAGH\nISKL\nMAOP");
+
         this.registerEmptyView(model);
 
         assertEquals("CASA", model.wordFound("CASA"));
@@ -42,6 +43,11 @@ class WSModelTest {
             @Override
             public void update(MessageToUI message) {
                 // do nothing
+            }
+
+            @Override
+            public void updateInfoLabel(String text) {
+
             }
 
         });

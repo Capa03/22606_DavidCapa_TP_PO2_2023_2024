@@ -11,9 +11,10 @@ public class BoardContent {
     private List<String> easy ;
     private Map<String,List<String>> solutions;
     private final int SIZE;
-
+    private FileReadWrite fileReadWrite;
     public BoardContent() {
         this.solutions = new HashMap<>();
+        this.fileReadWrite = new FileReadWrite();
         this.SIZE = 5;
         setBoardContent();
         setSolutions();
@@ -21,6 +22,7 @@ public class BoardContent {
 
     public BoardContent(int SIZE) {
         this.solutions = new HashMap<>();
+        this.fileReadWrite = new FileReadWrite();
         this.SIZE = SIZE;
         setBoardContent();
         setSolutions();
@@ -76,7 +78,7 @@ public class BoardContent {
     //Set readFile to BoardContent
     public void setBoardContent(){
         this.easy = new ArrayList<>();
-        this.boardContent = this.readFile();
+        this.boardContent = this.fileReadWrite.readFile();
         this.easy.add(this.boardContent);
     }
 
@@ -84,22 +86,4 @@ public class BoardContent {
         this.solutions.put("easy",easy);
     }
 
-
-    private String readFile() {
-        StringBuilder formattedContent = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/words.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Trim the line and add it to the formatted content with a newline character
-                formattedContent.append(line.trim()).append("\n");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        // Remove the trailing newline character if it exists
-        if (!formattedContent.isEmpty()) {
-            formattedContent.setLength(formattedContent.length() - 1);
-        }
-        return formattedContent.toString();
-    }
 }
