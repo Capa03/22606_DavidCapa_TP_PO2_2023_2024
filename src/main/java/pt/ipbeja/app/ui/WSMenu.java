@@ -16,8 +16,9 @@ import java.util.*;
 public class WSMenu extends GridPane {
     private Stage stage;
     private TextField inputField;
-    private WSModel model;
     private FileReadWrite fileReadWrite;
+    private WSBoard wsBoard;
+    private String boardContent;
     public WSMenu(Stage stage) {
         this.fileReadWrite = new FileReadWrite();
         this.stage = stage;
@@ -77,23 +78,23 @@ public class WSMenu extends GridPane {
 
         BoardContent board = new BoardContent(SIZE);
         board.setBoardContent();
-
-
-        WSModel wsModel = new WSModel(board.getBoardContent());
-        this.model = wsModel;
+        this.boardContent = board.getBoardContent();
+        WSModel wsModel = new WSModel(this.boardContent);
 
         WSBoard wsBoard = new WSBoard(wsModel);
-
+        this.wsBoard = wsBoard;
 
         MenuBar menuBar = new MenuBar();
         Menu gameMenu = new Menu("Game");
+        MenuItem saveMovements = new MenuItem("Save Movements");
         MenuItem restartMenuItem = new MenuItem("Restart");
         MenuItem quitMenuItem = new MenuItem("Quit");
 
+        saveMovements.setOnAction(event -> saveMovements());
         restartMenuItem.setOnAction(event -> showSizeInputDialog());
         quitMenuItem.setOnAction(event -> showQuitConfirmation(true));
 
-        gameMenu.getItems().addAll(restartMenuItem, quitMenuItem);
+        gameMenu.getItems().addAll(saveMovements,restartMenuItem, quitMenuItem);
         menuBar.getMenus().add(gameMenu);
 
         // Create a BorderPane to hold the menu bar and the game content
@@ -110,10 +111,14 @@ public class WSMenu extends GridPane {
         this.stage.show();
     }
 
+    private void saveMovements() {
+        this.fileReadWrite.writeFile(wsBoard.saveMovements(this.boardContent),"movements",true);
+    }
+
     private void showQuitConfirmation(boolean save) {
 
         if(save){
-            this.fileReadWrite.writeFile(model.getWordsFound());
+            this.fileReadWrite.writeFile(wsBoard.getWordsFound(),"score",true);
         }
 
         // Create a confirmation dialog for quitting

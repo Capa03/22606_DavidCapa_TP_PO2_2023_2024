@@ -24,8 +24,8 @@ public class FileReadWrite {
         return formattedContent.toString();
     }
 
-    public void writeFile(String content) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/resources/score.txt",true))) {
+    public void writeFile(String content,String fileName,boolean append) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/resources/"+fileName+".txt",append))) {
             writer.println(content);
         } catch (IOException e) {
             e.printStackTrace();

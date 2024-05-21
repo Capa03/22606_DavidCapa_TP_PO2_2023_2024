@@ -15,8 +15,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import pt.ipbeja.app.model.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -34,7 +35,7 @@ public class WSBoard extends GridPane implements WSView {
     private final Set<Position> foundWordPositions = new HashSet<>();
     private final VBox infoPanel = new VBox();
     private final TextArea movesTextArea = new TextArea();
-
+    private final BoardContent boardContent = new BoardContent();
     /**
      * Constructs a WSBoard with the given model.
      *
@@ -56,27 +57,7 @@ public class WSBoard extends GridPane implements WSView {
 
         EventHandler<ActionEvent> actionEventHandler = event -> {
             Button button = (Button) event.getSource();
-            Position buttonPosition = new Position(getRowIndex(button), getColumnIndex(button));
-            Background background = button.getBackground();
-            boolean isYellow = background != null && background.getFills().stream()
-                    .anyMatch(fill -> fill.getFill().equals(Color.YELLOW));
-
-            if (isYellow) {
-                button.setStyle("");
-                wsModel.positionSelected(null);
-                previousButton.set(null);
-            } else {
-                if (previousButton.get() != null) {
-                    Position previousButtonPosition = new Position(getRowIndex(previousButton.get()), getColumnIndex(previousButton.get()));
-                    if (!foundWordPositions.contains(previousButtonPosition)) {
-                        previousButton.get().setStyle("");
-                    }
-                }
-
-                button.setStyle("-fx-background-color: #FFFF00");
-                previousButton.set(button);
-                wsModel.positionSelected(buttonPosition);
-            }
+            handelButtonAction(button);
         };
 
         for (int line = 0; line < this.wsModel.nLines(); line++) {
@@ -90,6 +71,30 @@ public class WSBoard extends GridPane implements WSView {
             }
         }
         this.requestFocus();
+    }
+
+    private void handelButtonAction(Button button){
+        Position buttonPosition = new Position(getRowIndex(button), getColumnIndex(button));
+        Background background = button.getBackground();
+        boolean isYellow = background != null && background.getFills().stream()
+                .anyMatch(fill -> fill.getFill().equals(Color.YELLOW));
+
+        if (isYellow) {
+            button.setStyle("");
+            wsModel.positionSelected(null);
+            previousButton.set(null);
+        } else {
+            if (previousButton.get() != null) {
+                Position previousButtonPosition = new Position(getRowIndex(previousButton.get()), getColumnIndex(previousButton.get()));
+                if (!foundWordPositions.contains(previousButtonPosition)) {
+                    previousButton.get().setStyle("");
+                }
+            }
+
+            button.setStyle("-fx-background-color: #FFFF00");
+            previousButton.set(button);
+            wsModel.positionSelected(buttonPosition);
+        }
     }
 
     /**
@@ -137,12 +142,12 @@ public class WSBoard extends GridPane implements WSView {
                 continue;
             }
             button.setStyle("-fx-background-color: #00D100");
-            button.setDisable(true);
+            //button.setDisable(true);
             foundWordPositions.add(p);
         }
         if (this.wsModel.allWordsWereFound()) {
             FileReadWrite readWrite = new FileReadWrite();
-            readWrite.writeFile(wsModel.getWordsFound());
+            readWrite.writeFile(getWordsFound(),"score",true);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Finish");
             alert.setHeaderText("Congratulations!");
@@ -150,6 +155,47 @@ public class WSBoard extends GridPane implements WSView {
             alert.showAndWait();
             System.exit(0);
         }
+    }
+
+    public String saveMovements(String board){
+        StringBuilder movements = new StringBuilder();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String timestamp = now.format(formatter);
+        String boardContent = board;
+
+        movements.append("Time: " + timestamp + "\n");
+        movements.append("Board content: \n" + boardContent + "\n");
+        movements.append("\nMovements: \n" + movesTextArea.getText() + "\n");
+
+        return movements.toString();
+    }
+
+    public String getWordsFound() {
+        StringBuilder sb = new StringBuilder();
+        List<String> solutions = boardContent.getSolutions().get("easy");
+        Set<String> totalWords = new HashSet<>();
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String timestamp = now.format(formatter);
+
+        for (String solution : solutions) {
+            totalWords.addAll(Arrays.asList(solution.split("\\s+")));
+        }
+        List<String> wordsFound = this.wsModel.getWordsFound();
+        int totalWordsCount = totalWords.size();
+        int foundWordsCount = wordsFound.size();
+
+        sb.append("Words found: " +"Time: "+ timestamp + "\n");
+        for (String word : wordsFound) {
+            sb.append(word).append("\n");
+        }
+
+        double percentage = ((double) foundWordsCount / totalWordsCount) * 100;
+        sb.append(String.format("Total words found: %d/%d (%.2f%%) \n", foundWordsCount, totalWordsCount, percentage));
+
+        return sb.toString();
     }
 
     @Override

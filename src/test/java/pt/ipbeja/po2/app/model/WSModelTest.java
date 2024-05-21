@@ -13,6 +13,7 @@ class WSModelTest {
     @Test
     void testWordFound() {
         WSModel model = new WSModel("ACCD\nEAGH\nISKL\nMAOP");
+
         this.registerEmptyView(model);
 
         assertEquals("CASA", model.wordFound("CASA"));
