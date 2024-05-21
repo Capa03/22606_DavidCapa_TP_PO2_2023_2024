@@ -1,6 +1,8 @@
 package pt.ipbeja.app.model;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -93,6 +95,37 @@ public class WSModel {
         this.previousButtonPosition = null;
         return word.toString();
     }
+
+    public String getWordsFound() {
+        StringBuilder sb = new StringBuilder();
+        List<String> solutions = boardContent.getSolutions().get("easy");
+        Set<String> totalWords = new HashSet<>();
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String timestamp = now.format(formatter);
+
+        // Collect all words from solutions
+        for (String solution : solutions) {
+            totalWords.addAll(Arrays.asList(solution.split("\\s+")));
+        }
+
+        int totalWordsCount = totalWords.size();
+        int foundWordsCount = this.wordsFound.size();
+
+        sb.append("Words found: " +"Time: "+ timestamp + "\n");
+        for (String word : this.wordsFound) {
+            sb.append(word).append("\n");
+        }
+
+        double percentage = ((double) foundWordsCount / totalWordsCount) * 100;
+        sb.append(String.format("Total words found: %d/%d (%.2f%%) \n", foundWordsCount, totalWordsCount, percentage));
+
+        return sb.toString();
+    }
+
+
+
 
     /**
      * Check if the word is in the board

@@ -8,14 +8,18 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import pt.ipbeja.app.model.BoardContent;
+import pt.ipbeja.app.model.FileReadWrite;
 import pt.ipbeja.app.model.WSModel;
+import java.util.*;
 
 
 public class WSMenu extends GridPane {
     private Stage stage;
-    private TextField inputField; // Declare inputField at the class level
-
+    private TextField inputField;
+    private WSModel model;
+    private FileReadWrite fileReadWrite;
     public WSMenu(Stage stage) {
+        this.fileReadWrite = new FileReadWrite();
         this.stage = stage;
         this.buildUI();
     }
@@ -26,20 +30,16 @@ public class WSMenu extends GridPane {
         Button buttonLeaderBoard = new Button("Leaderboard");
         Button buttonQuit = new Button("Quit");
 
-
         buttonStart.setPrefSize(200, 50);
         buttonLeaderBoard.setPrefSize(200, 50);
         buttonQuit.setPrefSize(200, 50);
 
-
         buttonStart.setOnAction(event -> showSizeInputDialog());
-        buttonQuit.setOnAction(event -> showQuitConfirmation());
-
+        buttonQuit.setOnAction(event -> showQuitConfirmation(false));
 
         this.add(buttonStart, 0, 0);
         this.add(buttonLeaderBoard, 0, 1);
         this.add(buttonQuit, 0, 2);
-
 
         inputField = new TextField();
 
@@ -49,7 +49,7 @@ public class WSMenu extends GridPane {
     }
 
     private void showSizeInputDialog() {
-        // Create a dialog box for inputting size
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Enter Size");
         alert.setHeaderText("Enter the size of the board");
@@ -74,27 +74,24 @@ public class WSMenu extends GridPane {
     }
 
     private void startGame(int SIZE) {
-        // Print the size for debugging purposes
-        System.out.println("SIZE " + SIZE);
 
-        // Initialize the board content and set the size of the board
         BoardContent board = new BoardContent(SIZE);
         board.setBoardContent();
 
-        // Create the model with the board content
-        WSModel wsModel = new WSModel(board.getBoardContent());
 
-        // Create the WSBoard with the model
+        WSModel wsModel = new WSModel(board.getBoardContent());
+        this.model = wsModel;
+
         WSBoard wsBoard = new WSBoard(wsModel);
 
-        // Create the menu bar
+
         MenuBar menuBar = new MenuBar();
         Menu gameMenu = new Menu("Game");
         MenuItem restartMenuItem = new MenuItem("Restart");
         MenuItem quitMenuItem = new MenuItem("Quit");
 
         restartMenuItem.setOnAction(event -> showSizeInputDialog());
-        quitMenuItem.setOnAction(event -> showQuitConfirmation());
+        quitMenuItem.setOnAction(event -> showQuitConfirmation(true));
 
         gameMenu.getItems().addAll(restartMenuItem, quitMenuItem);
         menuBar.getMenus().add(gameMenu);
@@ -104,20 +101,21 @@ public class WSMenu extends GridPane {
         borderPane.setTop(menuBar);
         borderPane.setCenter(wsBoard.getMainLayout());
 
-        // Set the scene with the borderPane containing the menu and the game layout
         this.stage.setScene(new Scene(borderPane));
 
-        // Register the WSBoard view with the model
         wsModel.registerView(wsBoard);
 
-        // Request focus for WSBoard
         wsBoard.requestFocus();
 
-        // Show the stage
         this.stage.show();
     }
 
-    private void showQuitConfirmation() {
+    private void showQuitConfirmation(boolean save) {
+
+        if(save){
+            this.fileReadWrite.writeFile(model.getWordsFound());
+        }
+
         // Create a confirmation dialog for quitting
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
@@ -130,6 +128,4 @@ public class WSMenu extends GridPane {
             }
         });
     }
-
-
 }

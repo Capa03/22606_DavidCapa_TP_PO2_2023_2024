@@ -141,9 +141,11 @@ public class WSBoard extends GridPane implements WSView {
             foundWordPositions.add(p);
         }
         if (this.wsModel.allWordsWereFound()) {
+            FileReadWrite readWrite = new FileReadWrite();
+            readWrite.writeFile(wsModel.getWordsFound());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("");
-            alert.setHeaderText("");
+            alert.setTitle("Finish");
+            alert.setHeaderText("Congratulations!");
             alert.setContentText("Level completed!");
             alert.showAndWait();
             System.exit(0);
