@@ -12,12 +12,9 @@ public class BoardContent {
     private Map<String,List<String>> solutions;
     private final int SIZE;
     private FileReadWrite fileReadWrite;
+
     public BoardContent() {
-        this.solutions = new HashMap<>();
-        this.fileReadWrite = new FileReadWrite();
-        this.SIZE = 5;
-        setBoardContent();
-        setSolutions();
+        this(5);
     }
 
     public BoardContent(int SIZE) {
@@ -48,7 +45,9 @@ public class BoardContent {
         // Fill the board with random letters
         Random random = new Random();
         for (int row = 0; row < size; row++) {
+
             String word = (row < words.length) ? words[row] : ""; // Get the word for the current row or an empty string if no more words
+
             for (int col = 0; col < size; col++) {
                 char cell;
                 if (col < word.length()) {
