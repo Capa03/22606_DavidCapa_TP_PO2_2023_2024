@@ -47,27 +47,33 @@ public class WSModel {
      * @param currentPosition The user's selected position
      */
     public void positionSelected(Position currentPosition) {
+
         if (currentPosition == null) {
             System.out.println("Position reset");
             this.previousButtonPosition = null;
             this.positions.clear();
-            return;
+            return ;
         }
+
         System.out.println("LETTER " + textInPosition(currentPosition));
+
         if(this.previousButtonPosition != null ){
 
            String word = this.checkWord(this.previousButtonPosition, currentPosition);
 
            word = this.wordFound(word);
             System.out.println(word);
+
+            this.previousButtonPosition = null;
+
             if(!word.equals("Not Match")){
                 wsView.update(new MessageToUI( this.positions,"match"));
             }
 
             this.positions.clear();
-        }
+        }else{
             this.previousButtonPosition = currentPosition;
-
+        }
     }
 
     /**
@@ -77,6 +83,7 @@ public class WSModel {
      *
      * @param currentPosition The user's second selected position
      */
+
     private String checkWord(Position previousPosition, Position currentPosition) {
         StringBuilder word = new StringBuilder();
         int startLine = Math.min(previousPosition.line(), currentPosition.line());

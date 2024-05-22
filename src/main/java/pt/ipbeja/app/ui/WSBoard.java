@@ -84,18 +84,25 @@ public class WSBoard extends GridPane implements WSView {
             wsModel.positionSelected(null);
             previousButton.set(null);
         } else {
+            button.setStyle("-fx-background-color: #FFFF00");
+
+            wsModel.positionSelected(buttonPosition);
+
             if (previousButton.get() != null) {
                 Position previousButtonPosition = new Position(getRowIndex(previousButton.get()), getColumnIndex(previousButton.get()));
-                if (!foundWordPositions.contains(previousButtonPosition)) {
-                    previousButton.get().setStyle("");
-                }
-            }
+                    String stylePrevious = foundWordPositions.contains(previousButtonPosition) ? "-fx-background-color: #00D100" :"";
+                    previousButton.get().setStyle(stylePrevious);
+                    String styleCurrent = foundWordPositions.contains(buttonPosition) ? "-fx-background-color: #00D100" :"";
+                    button.setStyle(styleCurrent);
 
-            button.setStyle("-fx-background-color: #FFFF00");
-            previousButton.set(button);
-            wsModel.positionSelected(buttonPosition);
+                previousButton.set(null);
+            }else{
+                previousButton.set(button);
+            }
         }
     }
+
+
 
     /**
      * Sets up the info side pane and adds it to the main layout.
