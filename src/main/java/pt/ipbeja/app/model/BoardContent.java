@@ -39,40 +39,87 @@ public class BoardContent {
         // Split the input string into words
         String[] words = wordString.split("\\s+"); // Assuming words are separated by whitespace
 
-        // Create a StringBuilder to build the board
-        StringBuilder board = new StringBuilder();
+        // Create a 2D array to represent the board
+        char[][] board = new char[size][size];
 
-        // Fill the board with random letters
+        // Fill the board with random letters initially
         Random random = new Random();
         for (int row = 0; row < size; row++) {
-
-            String word = (row < words.length) ? words[row] : ""; // Get the word for the current row or an empty string if no more words
-
             for (int col = 0; col < size; col++) {
-                char cell;
-                if (col < word.length()) {
-                    // If the position corresponds to a word, fill it with the word's character
-                    cell = word.charAt(col);
-                } else {
-                    // Otherwise, fill it with a random letter
-                    cell = getRandomLetter(random);
-                }
-                // Append the cell to the board
-                board.append(cell);
-            }
-            // Add newline character after each row except the last one
-            if (row < size - 1) {
-                board.append('\n');
+                board[row][col] = getRandomLetter(random);
             }
         }
 
-        return board.toString();
+        // Place each word on the board
+        for (String word : words) {
+            placeWord(board, word, size, random);
+        }
+
+        // Build the board string from the 2D array
+        StringBuilder boardString = new StringBuilder();
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                boardString.append(board[row][col]);
+            }
+            if (row < size - 1) {
+                boardString.append('\n');
+            }
+        }
+
+        System.out.println(boardString.toString());
+        return boardString.toString();
+    }
+
+    private void placeWord(char[][] board, String word, int size, Random random) {
+        boolean placed = false;
+        while (!placed) {
+            int row = random.nextInt(size);
+            int col = random.nextInt(size);
+            boolean horizontal = random.nextBoolean();
+
+            if (horizontal) {
+                if (col + word.length() <= size) {
+                    if (canPlaceWord(board, word, row, col, horizontal)) {
+                        for (int i = 0; i < word.length(); i++) {
+                            board[row][col + i] = word.charAt(i);
+                        }
+                        placed = true;
+                    }
+                }
+            } else {
+                if (row + word.length() <= size) {
+                    if (canPlaceWord(board, word, row, col, horizontal)) {
+                        for (int i = 0; i < word.length(); i++) {
+                            board[row + i][col] = word.charAt(i);
+                        }
+                        placed = true;
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean canPlaceWord(char[][] board, String word, int row, int col, boolean horizontal) {
+        for (int i = 0; i < word.length(); i++) {
+            if (horizontal) {
+                if (board[row][col + i] != getRandomLetter(new Random())) {
+                    return false;
+                }
+            } else {
+                if (board[row + i][col] != getRandomLetter(new Random())) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private char getRandomLetter(Random random) {
         int index = random.nextInt(LETTERS.length);
         return LETTERS[index];
     }
+
+
 
     //Set readFile to BoardContent
     public void setBoardContent(){
