@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import pt.ipbeja.app.model.BoardContent;
 import pt.ipbeja.app.model.FileReadWrite;
 import pt.ipbeja.app.model.WSModel;
-import java.util.*;
 
 
 public class WSMenu extends GridPane {
@@ -18,7 +17,7 @@ public class WSMenu extends GridPane {
     private TextField inputField;
     private FileReadWrite fileReadWrite;
     private WSBoard wsBoard;
-    private String boardContent;
+    private BoardContent board;
     public WSMenu(Stage stage) {
         this.fileReadWrite = new FileReadWrite();
         this.stage = stage;
@@ -76,10 +75,10 @@ public class WSMenu extends GridPane {
 
     private void startGame(int SIZE) {
 
-        BoardContent board = new BoardContent(SIZE);
+        board = new BoardContent(SIZE);
         board.setBoardContent();
-        this.boardContent = board.getBoardContent();
-        WSModel wsModel = new WSModel(this.boardContent);
+
+        WSModel wsModel = new WSModel(board);
 
         WSBoard wsBoard = new WSBoard(wsModel);
         this.wsBoard = wsBoard;
@@ -112,20 +111,17 @@ public class WSMenu extends GridPane {
     }
 
     private void saveMovements() {
-        this.fileReadWrite.writeFile(wsBoard.saveMovements(this.boardContent),"movements",true);
+        this.fileReadWrite.writeFile(wsBoard.saveMovements(this.board.getBoardContent()),"movements",true);
     }
 
     private void showQuitConfirmation(boolean save) {
-
         if(save){
             this.fileReadWrite.writeFile(wsBoard.getWordsFound(),"score",true);
         }
-
         // Create a confirmation dialog for quitting
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Quit the game?");
-
         // Show the dialog box and wait for user input
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {

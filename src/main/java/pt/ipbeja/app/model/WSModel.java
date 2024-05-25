@@ -22,13 +22,14 @@ public class WSModel {
     private final BoardContent boardContent;
     private List<Position> positions;
 
-    public WSModel(String boardContent) {
-        this.boardContent = new BoardContent();
+    public WSModel(BoardContent boardContent) {
+        this.boardContent = boardContent;
         this.positions = new ArrayList<>();
         this.wordsFound = new ArrayList<>();
         this.lettersGrid = new ArrayList<>();
         lettersGrid.add(new ArrayList<>());
-        for(char c : boardContent.toCharArray()) {
+
+        for(char c : boardContent.getBoardContent().toCharArray()) {
             if (c == '\n') lettersGrid.add(new ArrayList<>());
             else lettersGrid.get(lettersGrid.size() - 1).add(c + "");
         }
@@ -107,19 +108,23 @@ public class WSModel {
         return this.wordsFound;
     }
 
+    public List<String> getSolutions(){
+        return this.boardContent.getSolutions();
+    }
+
     /**
      * Check if the word is in the board
      * @param word
      * @return true if the word is in the board
      */
     public String wordFound(String word) {
-        List<String> solutions = boardContent.getSolutions().get("easy");
+        List<String> solutions = getSolutions();
 
         // Check each solution
         for (String solution : solutions) {
             // Split the solution into individual words
             String[] words = solution.split("\\s+");
-
+            System.out.println(words);
             // Check each word in the solution
             for (String w : words) {
                 if (w.equals(word)) {
@@ -150,7 +155,7 @@ public class WSModel {
      * @return  true if all words were found
      */
     public boolean allWordsWereFound() {
-        List<String> solutions = this.boardContent.getSolutions().get("easy");
+        List<String> solutions = getSolutions();
 
         Set<String> allSolutionsWords = new HashSet<>();
         for (String solution : solutions) {

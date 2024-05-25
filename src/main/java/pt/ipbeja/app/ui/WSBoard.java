@@ -35,7 +35,7 @@ public class WSBoard extends GridPane implements WSView {
     private final Set<Position> foundWordPositions = new HashSet<>();
     private final VBox infoPanel = new VBox();
     private final TextArea movesTextArea = new TextArea();
-    private final BoardContent boardContent = new BoardContent();
+
     /**
      * Constructs a WSBoard with the given model.
      *
@@ -149,7 +149,6 @@ public class WSBoard extends GridPane implements WSView {
                 continue;
             }
             button.setStyle("-fx-background-color: #00D100");
-            //button.setDisable(true);
             foundWordPositions.add(p);
         }
         if (this.wsModel.allWordsWereFound()) {
@@ -180,7 +179,7 @@ public class WSBoard extends GridPane implements WSView {
 
     public String getWordsFound() {
         StringBuilder sb = new StringBuilder();
-        List<String> solutions = boardContent.getSolutions().get("easy");
+        List<String> solutions = wsModel.getSolutions();
         Set<String> totalWords = new HashSet<>();
 
         LocalDateTime now = LocalDateTime.now();
@@ -209,6 +208,7 @@ public class WSBoard extends GridPane implements WSView {
     public void updateInfoLabel(String text) {
         movesTextArea.appendText(text + "\n");
     }
+
 
     /**
      * Returns the main layout containing the board and the info panel.

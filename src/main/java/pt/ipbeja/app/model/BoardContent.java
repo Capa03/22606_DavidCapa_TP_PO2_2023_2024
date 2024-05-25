@@ -8,30 +8,37 @@ import java.util.*;
 public class BoardContent {
 
     private String boardContent;
-    private List<String> easy;
-    private Map<String, List<String>> solutions;
+    private List<String> words;
+    private List<String> solutions;
+
     private final int SIZE;
     private FileReadWrite fileReadWrite;
     private final char PLACEHOLDER = '-'; // Placeholder for empty cells
 
-    public BoardContent() {
-        this(5);
-    }
 
     public BoardContent(int SIZE) {
-        this.solutions = new HashMap<>();
+        this.words = new ArrayList<>();
+        this.solutions = new ArrayList<>();
         this.fileReadWrite = new FileReadWrite();
         this.SIZE = SIZE;
-        setBoardContent();
-        setSolutions();
     }
 
-    public Map<String, List<String>> getSolutions() {
+    public List<String> getSolutions() {
         return this.solutions;
     }
 
+    private void setSolutions() {
+        this.solutions.addAll(this.words);
+    }
+
     public String getBoardContent() {
-        return generateBoard(boardContent, this.SIZE);
+        return this.boardContent;
+    }
+
+
+    public void setBoardContent(){
+        String file = this.fileReadWrite.readFile();
+        this.boardContent = generateBoard(file, this.SIZE);
     }
 
     private final char[] LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
@@ -87,10 +94,11 @@ public class BoardContent {
             }
         }
 
+        for(String word: placedWords){
+            this.words.add(word);
+        }
         // Update the solutions map
-        this.solutions.put("easy", placedWords);
-
-        System.out.println(boardString.toString());
+        this.setSolutions();
         return boardString.toString();
     }
 
@@ -140,14 +148,6 @@ public class BoardContent {
         return LETTERS[index];
     }
 
-    // Set readFile to BoardContent
-    public void setBoardContent() {
-        this.easy = new ArrayList<>();
-        this.boardContent = this.fileReadWrite.readFile();
-        this.easy.add(this.boardContent);
-    }
 
-    private void setSolutions() {
-        this.solutions.put("easy", easy);
-    }
+
 }

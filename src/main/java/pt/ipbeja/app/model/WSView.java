@@ -9,4 +9,5 @@ public interface WSView {
 
     void update(MessageToUI messageToUI);
     void updateInfoLabel(String text);
+
 }
