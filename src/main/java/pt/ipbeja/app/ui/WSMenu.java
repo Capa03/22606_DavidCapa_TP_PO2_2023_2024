@@ -3,14 +3,12 @@ package pt.ipbeja.app.ui;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import pt.ipbeja.app.model.BoardContent;
 import pt.ipbeja.app.model.FileReadWrite;
 import pt.ipbeja.app.model.WSModel;
-
 
 public class WSMenu extends GridPane {
     private Stage stage;
@@ -18,14 +16,60 @@ public class WSMenu extends GridPane {
     private FileReadWrite fileReadWrite;
     private WSBoard wsBoard;
     private BoardContent board;
+
+    /**
+     * Constructs a WSMenu with the given stage.
+     *
+     * @param stage the stage for the application
+     */
     public WSMenu(Stage stage) {
         this.fileReadWrite = new FileReadWrite();
         this.stage = stage;
         this.buildUI();
     }
 
+    /**
+     * Setup Menu UI
+     */
     private void buildUI() {
+        this.setPadding(new Insets(20));
+        this.setAlignment(Pos.CENTER);
+        this.setVgap(15);
 
+        this.inputField = new TextField();
+        inputField.setPromptText("Enter board size...");
+        inputField.setMaxWidth(200);
+
+        this.buttonSetup();
+    }
+
+    /**
+     * Start Game
+     *
+     * @param SIZE size of the board
+     */
+    private void startGame(int SIZE) {
+        board = new BoardContent(SIZE);
+        board.setBoardContent();
+
+        WSModel wsModel = new WSModel(board);
+
+        WSBoard wsBoard = new WSBoard(wsModel);
+        this.wsBoard = wsBoard;
+
+        this.setupMenuBar();
+
+        wsModel.registerView(wsBoard);
+
+        wsBoard.requestFocus();
+
+        this.stage.show();
+    }
+
+    /**
+     * Setup Buttons UI
+     */
+    private void buttonSetup() {
         Button buttonStart = new Button("Start");
         Button buttonLeaderBoard = new Button("Leaderboard");
         Button buttonQuit = new Button("Quit");
@@ -34,22 +78,22 @@ public class WSMenu extends GridPane {
         buttonLeaderBoard.setPrefSize(200, 50);
         buttonQuit.setPrefSize(200, 50);
 
+        buttonStart.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        buttonLeaderBoard.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+        buttonQuit.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+
         buttonStart.setOnAction(event -> showSizeInputDialog());
         buttonQuit.setOnAction(event -> showQuitConfirmation(false));
 
         this.add(buttonStart, 0, 0);
         this.add(buttonLeaderBoard, 0, 1);
         this.add(buttonQuit, 0, 2);
-
-        inputField = new TextField();
-
-        // Set padding and alignment
-        this.setPadding(new Insets(10));
-        this.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Show Input Box to get Size of the board
+     */
     private void showSizeInputDialog() {
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Enter Size");
         alert.setHeaderText("Enter the size of the board");
@@ -67,22 +111,15 @@ public class WSMenu extends GridPane {
                     errorAlert.setContentText("Please enter a valid number for the size.");
                     errorAlert.showAndWait();
                     showSizeInputDialog();
-
                 }
             }
         });
     }
 
-    private void startGame(int SIZE) {
-
-        board = new BoardContent(SIZE);
-        board.setBoardContent();
-
-        WSModel wsModel = new WSModel(board);
-
-        WSBoard wsBoard = new WSBoard(wsModel);
-        this.wsBoard = wsBoard;
-
+    /**
+     * Setup Menu Bar Menu in Top of the game
+     */
+    private void setupMenuBar() {
         MenuBar menuBar = new MenuBar();
         Menu gameMenu = new Menu("Game");
         MenuItem saveMovements = new MenuItem("Save Movements");
@@ -93,7 +130,7 @@ public class WSMenu extends GridPane {
         restartMenuItem.setOnAction(event -> showSizeInputDialog());
         quitMenuItem.setOnAction(event -> showQuitConfirmation(true));
 
-        gameMenu.getItems().addAll(saveMovements,restartMenuItem, quitMenuItem);
+        gameMenu.getItems().addAll(saveMovements, restartMenuItem, quitMenuItem);
         menuBar.getMenus().add(gameMenu);
 
         // Create a BorderPane to hold the menu bar and the game content
@@ -102,21 +139,20 @@ public class WSMenu extends GridPane {
         borderPane.setCenter(wsBoard.getMainLayout());
 
         this.stage.setScene(new Scene(borderPane));
-
-        wsModel.registerView(wsBoard);
-
-        wsBoard.requestFocus();
-
-        this.stage.show();
     }
 
     private void saveMovements() {
-        this.fileReadWrite.writeFile(wsBoard.saveMovements(this.board.getBoardContent()),"movements",true);
+        this.fileReadWrite.writeFile(wsBoard.saveMovements(this.board.getBoardContent()), "movements", true);
     }
 
+    /**
+     * Show Quit Confirmation dialog
+     *
+     * @param save if true saves the score, if false just close the game
+     */
     private void showQuitConfirmation(boolean save) {
-        if(save){
-            this.fileReadWrite.writeFile(wsBoard.getWordsFound(),"score",true);
+        if (save) {
+            this.fileReadWrite.writeFile(wsBoard.getWordsFound(), "score", true);
         }
         // Create a confirmation dialog for quitting
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

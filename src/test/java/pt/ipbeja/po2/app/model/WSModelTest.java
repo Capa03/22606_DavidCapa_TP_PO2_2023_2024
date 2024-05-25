@@ -13,7 +13,7 @@ class WSModelTest {
 
     @Test
     void testWordFound() {
-        BoardContent boardContent = new BoardContent();
+        BoardContent boardContent = new BoardContent(5);
 
         WSModel model = new WSModel(boardContent);
 
@@ -24,7 +24,7 @@ class WSModelTest {
 
     @Test
     void testWordWithWildcardFound() {
-        BoardContent boardContent = new BoardContent();
+        BoardContent boardContent = new BoardContent(5);
         WSModel model = new WSModel(boardContent);
         this.registerEmptyView(model);
         assertEquals("MALA", model.wordWithWildcardFound("MALA"));
@@ -32,7 +32,7 @@ class WSModelTest {
 
     @Test
     void testallWordsWereFound() {
-        BoardContent boardContent = new BoardContent();
+        BoardContent boardContent = new BoardContent(5);
 
         WSModel model = new WSModel(boardContent);
         this.registerEmptyView(model);

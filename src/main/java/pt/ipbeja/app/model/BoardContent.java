@@ -1,153 +1,278 @@
 package pt.ipbeja.app.model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
+/**
+ * The BoardContent class represents a board for placing words.
+ * It generates a board of a specified size, places words from a file, and fills the remaining cells with random letters.
+ */
 public class BoardContent {
 
     private String boardContent;
-    private List<String> words;
-    private List<String> solutions;
+    private final List<String> words;
+    private final List<String> solutions;
+    private final int size;
+    private final FileReadWrite fileReadWrite;
+    private static final char PLACEHOLDER = '-';
+    private static final char[] LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-    private final int SIZE;
-    private FileReadWrite fileReadWrite;
-    private final char PLACEHOLDER = '-'; // Placeholder for empty cells
-
-
-    public BoardContent(int SIZE) {
+    /**
+     * Constructs a BoardContent instance with a specified board size.
+     *
+     * @param size the size of the board.
+     */
+    public BoardContent(int size) {
+        this.size = size;
         this.words = new ArrayList<>();
         this.solutions = new ArrayList<>();
         this.fileReadWrite = new FileReadWrite();
-        this.SIZE = SIZE;
     }
 
+    /**
+     * Returns the list of solutions (placed words) on the board.
+     *
+     * @return a list of placed words.
+     */
     public List<String> getSolutions() {
-        return this.solutions;
+        return new ArrayList<>(this.solutions);
     }
 
-    private void setSolutions() {
-        this.solutions.addAll(this.words);
-    }
-
+    /**
+     * Returns the string representation of the board content.
+     *
+     * @return the board content as a string.
+     */
     public String getBoardContent() {
         return this.boardContent;
     }
 
-
-    public void setBoardContent(){
-        String file = this.fileReadWrite.readFile();
-        this.boardContent = generateBoard(file, this.SIZE);
+    /**
+     * Sets the board content by reading words from a file and generating the board.
+     */
+    public void setBoardContent() {
+        String fileContent = this.fileReadWrite.readFile();
+        this.boardContent = generateBoard(fileContent);
     }
 
-    private final char[] LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    /**
+     * Gets the number of columns in the board (same as rows for a square board).
+     *
+     * @return the number of columns.
+     */
+    private int getCols() {
+        return this.size;
+    }
 
-    private String generateBoard(String wordString, int size) {
-        // Split the input string into words
-        String[] words = wordString.split("\\s+"); // Assuming words are separated by whitespace
+    /**
+     * Gets the number of rows in the board (same as columns for a square board).
+     *
+     * @return the number of rows.
+     */
+    private int getRows() {
+        return this.size;
+    }
 
-        // Filter out words longer than the board size
+    /**
+     * Generates a board with the given words and size, placing words and filling empty cells with random letters.
+     *
+     * @param wordString the string containing words to place on the board.
+     * @return the string representation of the generated board.
+     */
+    private String generateBoard(String wordString) {
+        List<String> filteredWords = filterWordsBySize(wordString.split("\\s+"), getCols());
+        List<String> selectedWords = selectRandomWords(filteredWords);
+        List<List<Character>> board = initializeBoard(getRows(), getCols());
+        List<String> placedWords = placeWordsOnBoard(board, selectedWords);
+
+        fillEmptyCells(board);
+        this.words.addAll(placedWords);
+        this.solutions.addAll(this.words);
+
+        return convertBoardToString(board);
+    }
+
+    /**
+     * Filters words by the specified size, returning only those that fit within the board.
+     *
+     * @param words an array of words to filter.
+     * @param maxSize the maximum size of a word.
+     * @return a list of words that fit within the specified size.
+     */
+    private List<String> filterWordsBySize(String[] words, int maxSize) {
         List<String> filteredWords = new ArrayList<>();
         for (String word : words) {
-            if (word.length() <= size) {
+            if (word.length() <= maxSize) {
                 filteredWords.add(word);
             }
         }
+        return filteredWords;
+    }
 
-        // Create a 2D array to represent the board
-        char[][] board = new char[size][size];
+    /**
+     * Selects a random subset of words from the filtered list.
+     *
+     * @param words the list of filtered words.
+     * @return a randomly selected list of words.
+     */
+    private List<String> selectRandomWords(List<String> words) {
+        List<String> selectedWords = new ArrayList<>();
+        Random random = new Random();
+        Set<String> selectedSet = new HashSet<>();
 
-        // Fill the board with placeholders initially
-        for (int row = 0; row < size; row++) {
-            Arrays.fill(board[row], PLACEHOLDER);
+        while (selectedSet.size() < words.size()) {
+            String word = words.get(random.nextInt(words.size()));
+            if (!selectedSet.contains(word)) {
+                selectedSet.add(word);
+                selectedWords.add(word);
+            }
         }
 
-        // List to store words that are successfully placed on the board
-        List<String> placedWords = new ArrayList<>();
+        return selectedWords;
+    }
 
-        // Place each word on the board
+    /**
+     * Initializes a 2D list (board) with placeholders.
+     *
+     * @param rows the number of rows in the board.
+     * @param cols the number of columns in the board.
+     * @return the initialized board.
+     */
+    private List<List<Character>> initializeBoard(int rows, int cols) {
+        List<List<Character>> board = new ArrayList<>();
+        for (int row = 0; row < rows; row++) {
+            List<Character> boardRow = new ArrayList<>(Collections.nCopies(cols, PLACEHOLDER));
+            board.add(boardRow);
+        }
+        return board;
+    }
+
+    /**
+     * Places words on the board if they fit, and returns a list of successfully placed words.
+     *
+     * @param board the board to place words on.
+     * @param words the list of words to place.
+     * @return a list of successfully placed words.
+     */
+    private List<String> placeWordsOnBoard(List<List<Character>> board, List<String> words) {
+        List<String> placedWords = new ArrayList<>();
         Random random = new Random();
-        for (String word : filteredWords) {
-            if (placeWord(board, word, size, random)) {
+
+        for (String word : words) {
+            if (tryPlaceWord(board, word, random)) {
                 placedWords.add(word);
             }
         }
-
-        // Fill the remaining cells with random letters
-        for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) {
-                if (board[row][col] == PLACEHOLDER) {
-                    board[row][col] = getRandomLetter(random);
-                }
-            }
-        }
-
-        // Build the board string from the 2D array
-        StringBuilder boardString = new StringBuilder();
-        for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) {
-                boardString.append(board[row][col]);
-            }
-            if (row < size - 1) {
-                boardString.append('\n');
-            }
-        }
-
-        for(String word: placedWords){
-            this.words.add(word);
-        }
-        // Update the solutions map
-        this.setSolutions();
-        return boardString.toString();
+        return placedWords;
     }
 
-    private boolean placeWord(char[][] board, String word, int size, Random random) {
-        boolean placed = false;
-        while (!placed) {
-            int row = random.nextInt(size);
-            int col = random.nextInt(size);
+    /**
+     * Tries to place a word on the board, attempting up to a maximum number of times.
+     *
+     * @param board the board to place the word on.
+     * @param word the word to place.
+     * @param random the Random instance used for generating random positions.
+     * @return true if the word was successfully placed, false otherwise.
+     */
+    private boolean tryPlaceWord(List<List<Character>> board, String word, Random random) {
+        for (int attempts = 0; attempts < 100; attempts++) {
+            int row = random.nextInt(getRows());
+            int col = random.nextInt(getCols());
             boolean horizontal = random.nextBoolean();
 
-            if (horizontal) {
-                if (col + word.length() <= size && canPlaceWord(board, word, row, col, horizontal)) {
-                    for (int i = 0; i < word.length(); i++) {
-                        board[row][col + i] = word.charAt(i);
-                    }
-                    placed = true;
-                }
-            } else {
-                if (row + word.length() <= size && canPlaceWord(board, word, row, col, horizontal)) {
-                    for (int i = 0; i < word.length(); i++) {
-                        board[row + i][col] = word.charAt(i);
-                    }
-                    placed = true;
-                }
+            if (canPlaceWord(board, word, row, col, horizontal)) {
+                placeWord(board, word, row, col, horizontal);
+                return true;
             }
         }
-        return placed;
+        return false;
     }
 
-    private boolean canPlaceWord(char[][] board, String word, int row, int col, boolean horizontal) {
-        for (int i = 0; i < word.length(); i++) {
-            if (horizontal) {
-                if (board[row][col + i] != PLACEHOLDER) {
-                    return false;
-                }
-            } else {
-                if (board[row + i][col] != PLACEHOLDER) {
-                    return false;
-                }
+    /**
+     * Checks if a word can be placed on the board at the specified position.
+     *
+     * @param board the board to check.
+     * @param word the word to place.
+     * @param row the starting row position.
+     * @param col the starting column position.
+     * @param horizontal whether the word is placed horizontally or vertically.
+     * @return true if the word can be placed, false otherwise.
+     */
+    private boolean canPlaceWord(List<List<Character>> board, String word, int row, int col, boolean horizontal) {
+        if (horizontal) {
+            if (col + word.length() > getCols()) return false;
+            for (int i = 0; i < word.length(); i++) {
+                if (board.get(row).get(col + i) != PLACEHOLDER) return false;
+            }
+        } else {
+            if (row + word.length() > getRows()) return false;
+            for (int i = 0; i < word.length(); i++) {
+                if (board.get(row + i).get(col) != PLACEHOLDER) return false;
             }
         }
         return true;
     }
 
-    private char getRandomLetter(Random random) {
-        int index = random.nextInt(LETTERS.length);
-        return LETTERS[index];
+    /**
+     * Places a word on the board at the specified position.
+     *
+     * @param board the board to place the word on.
+     * @param word the word to place.
+     * @param row the starting row position.
+     * @param col the starting column position.
+     * @param horizontal whether the word is placed horizontally or vertically.
+     */
+    private void placeWord(List<List<Character>> board, String word, int row, int col, boolean horizontal) {
+        for (int i = 0; i < word.length(); i++) {
+            if (horizontal) {
+                board.get(row).set(col + i, word.charAt(i));
+            } else {
+                board.get(row + i).set(col, word.charAt(i));
+            }
+        }
     }
 
+    /**
+     * Fills empty cells on the board with random letters.
+     *
+     * @param board the board to fill.
+     */
+    private void fillEmptyCells(List<List<Character>> board) {
+        Random random = new Random();
+        for (List<Character> row : board) {
+            for (int col = 0; col < getCols(); col++) {
+                if (row.get(col) == PLACEHOLDER) {
+                    row.set(col, getRandomLetter(random));
+                }
+            }
+        }
+    }
 
+    /**
+     * Gets a random letter from the LETTERS array.
+     *
+     * @param random the Random instance used for generating random letters.
+     * @return a random letter.
+     */
+    private char getRandomLetter(Random random) {
+        return LETTERS[random.nextInt(LETTERS.length)];
+    }
 
+    /**
+     * Converts the board to string.
+     *
+     * @param board the board to convert.
+     * @return the string of the board.
+     */
+    private String convertBoardToString(List<List<Character>> board) {
+        StringBuilder boardString = new StringBuilder(getRows() * (getCols() + 1));
+        for (int row = 0; row < getRows(); row++) {
+            for (int col = 0; col < getCols(); col++) {
+                boardString.append(board.get(row).get(col));
+            }
+            if (row < getRows() - 1) {
+                boardString.append('\n');
+            }
+        }
+        return boardString.toString();
+    }
 }

@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Bug Fixed UI Button">
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Solved Solutions Bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/words.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/ui/WSBoard.class" afterDir="false" />
@@ -292,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716414773752</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Solved Solutions Bug">
+      <option name="closed" value="true" />
+      <created>1716661479613</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716661479613</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +346,8 @@
     <MESSAGE value="Implemented menuBar to restart and Quit the game" />
     <MESSAGE value="Implemented Percentage and save file words found" />
     <MESSAGE value="Bug Fixed UI Button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Fixed UI Button" />
+    <MESSAGE value="Solved Solutions Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solved Solutions Bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
