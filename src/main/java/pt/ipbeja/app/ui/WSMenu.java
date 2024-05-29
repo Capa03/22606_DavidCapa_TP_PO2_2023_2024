@@ -49,8 +49,9 @@ public class WSMenu extends GridPane {
      * @param SIZE size of the board
      */
     private void startGame(int SIZE) {
+        FileReadWrite fileReadWrite = new FileReadWrite();
         board = new BoardContent(SIZE);
-        board.setBoardContent();
+        board.setBoardContent(fileReadWrite.readFile("words"));
 
         WSModel wsModel = new WSModel(board);
 

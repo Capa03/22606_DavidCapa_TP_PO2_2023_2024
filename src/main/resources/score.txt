@@ -1,0 +1,278 @@
+Words found: Time: 2024-05-22 21:38:27
+GATO
+CAO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-22 22:05:45
+GATO
+CAO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-22 22:06:09
+CAO
+CARRO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-22 22:16:50
+GATO
+CAO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-22 22:27:54
+GATO
+CARRO
+CAO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-22 22:35:42
+GATO
+CAO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-24 00:44:55
+GATO
+CARRO
+CAO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-24 02:27:33
+CAO
+CARRO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-24 02:29:11
+CAO
+GATO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-24 02:35:26
+Total words found: 0/3 (0,00%) 
+
+Words found: Time: 2024-05-24 02:48:53
+CAO
+CARRO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 14:01:29
+CARRO
+GATO
+CAO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:35:49
+GATO
+CARRO
+CAO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:39:28
+CARRO
+CAO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:42:25
+CAO
+GATO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:54:45
+CAO
+GATO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:55:06
+GATO
+CARRO
+CAO
+Total words found: 3/3 (100,00%) 
+
+Words found: 3/3
+Time: 2024-05-25 19:57:53
+Words found: [CARRO, GATO, CAO]
+
+Words found: Time: 2024-05-25 19:58:22
+GATO
+CAO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:59:03
+GATO
+CAO
+CARRO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:59:28
+CARRO
+CAO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 19:59:57
+CARRO
+CAO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 20:00:46
+GATO
+CARRO
+CAO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 20:01:19
+CAO
+CARRO
+GATO
+Total words found: 3/3 (100,00%) 
+
+Words found: Time: 2024-05-25 20:01:43
+CABRA
+CAO
+CARRO
+GATO
+PASSARO
+Total words found: 5/5 (100,00%) 
+
+Words found: Time: 2024-05-25 20:02:05
+CABRA
+CARRO
+CAO
+GATO
+Total words found: 4/4 (100,00%) 
+
+Words found: Time: 2024-05-25 20:02:32
+CASA
+CAO
+GATO
+CARRO
+CABRA
+Total words found: 5/5 (100,00%) 
+
+Words found: Time: 2024-05-25 20:08:05
+CABRA
+CAO
+CASA
+GATO
+Total words found: 4/4 (100,00%) 
+
+Words found: Time: 2024-05-25 20:09:53
+CASA
+CAO
+CORRER
+CABRA
+GATO
+MEDICO
+Total words found: 6/6 (100,00%) 
+
+Words found: Time: 2024-05-25 20:10:49
+CARRO
+CAO
+CASA
+PASSARO
+GATO
+CABRA
+Total words found: 6/6 (100,00%) 
+
+Words found: Time: 2024-05-25 20:12:06
+CARRO
+CASA
+CAO
+GATO
+GIRAFA
+CABRA
+COLHER
+Total words found: 7/11 (63,64%) 
+
+Words found: Time: 2024-05-25 20:14:15
+CABRA
+MECANICO
+CASA
+GIRAFA
+CORRER
+GATO
+CAO
+CARRO
+Total words found: 8/8 (100,00%) 
+
+Words found: Time: 2024-05-25 20:16:35
+CABRA
+CASA
+GATO
+CAO
+Total words found: 4/4 (100,00%) 
+
+Words found: Time: 2024-05-25 21:06:33
+CAO
+CARRO
+GATO
+CABRA
+CASA
+Total words found: 5/5 (100,00%) 
+
+Words found: Time: 2024-05-29 00:58:06
+CASA
+CABRA
+MEDICO
+COLHER
+CORRER
+CARRO
+Total words found: 6/6 (100,00%) 
+
+Words found: Time: 2024-05-29 00:58:32
+GATO
+CARRO
+CAO
+CASA
+CABRA
+Total words found: 5/5 (100,00%) 
+
+Words found: Time: 2024-05-29 00:59:46
+CAO
+CABRA
+CASA
+GIRAFA
+COLHER
+MEDICO
+CORRER
+GATO
+CARRO
+PASSARO
+MECANICO
+Total words found: 11/11 (100,00%) 
+
+Words found: Time: 2024-05-29 11:49:40
+CARRO
+CASA
+CAO
+GATO
+CABRA
+Total words found: 5/5 (100,00%) 
+
+Words found: Time: 2024-05-29 12:06:45
+COLHER
+CARRO
+CASA
+CABRA
+CAO
+GATO
+Total words found: 6/6 (100,00%) 
+
+Words found: Time: 2024-05-29 12:19:36
+CAO
+GATO
+CARRO
+CASA
+Total words found: 4/4 (100,00%) 
+

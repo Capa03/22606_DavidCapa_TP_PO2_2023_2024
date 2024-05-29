@@ -49,9 +49,8 @@ public class BoardContent {
     /**
      * Sets the board content by reading words from a file and generating the board.
      */
-    public void setBoardContent() {
-        String fileContent = this.fileReadWrite.readFile();
-        this.boardContent = generateBoard(fileContent);
+    public void setBoardContent(String boardContent) {
+        this.boardContent = generateBoard(boardContent);
     }
 
     /**

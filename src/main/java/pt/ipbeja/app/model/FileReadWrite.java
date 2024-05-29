@@ -6,9 +6,9 @@ public class FileReadWrite {
 
     public FileReadWrite() {}
 
-    public String readFile() {
+    public String readFile(String fileName) {
         StringBuilder formattedContent = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/words.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/"+fileName+".txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 // Trim the line and add it to the formatted content with a newline character

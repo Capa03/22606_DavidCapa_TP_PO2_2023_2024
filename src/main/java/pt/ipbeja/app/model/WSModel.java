@@ -72,13 +72,10 @@ public class WSModel {
      */
     public void positionSelected(Position currentPosition) {
         if (currentPosition == null) {
-
             this.previousButtonPosition = null;
             this.positions.clear();
             return;
         }
-
-
 
         if (this.previousButtonPosition != null) {
             String word = this.checkWord(this.previousButtonPosition, currentPosition);
@@ -102,7 +99,7 @@ public class WSModel {
      * @param currentPosition  the user's second selected position.
      * @return the word formed by the interval.
      */
-    private String checkWord(Position previousPosition, Position currentPosition) {
+    public String checkWord(Position previousPosition, Position currentPosition) {
         StringBuilder word = new StringBuilder();
         int startLine = Math.min(previousPosition.line(), currentPosition.line());
         int endLine = Math.max(previousPosition.line(), currentPosition.line());
@@ -161,7 +158,7 @@ public class WSModel {
                         message.append(String.format("(%d, %c) ", p.line(), (char) ('A' + p.col())));
                     }
                     this.wsView.updateInfoLabel(message.toString());
-                    return "Match: " + word;
+                    return word;
                 }
             }
         }
