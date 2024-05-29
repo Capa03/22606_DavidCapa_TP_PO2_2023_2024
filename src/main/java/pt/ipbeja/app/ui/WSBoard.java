@@ -8,11 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import pt.ipbeja.app.model.*;
 
 import java.time.LocalDateTime;
@@ -26,7 +24,6 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @version 2024/04/14
  */
-
 public class WSBoard extends GridPane implements WSView {
 
     private final WSModel wsModel;
@@ -35,13 +32,12 @@ public class WSBoard extends GridPane implements WSView {
     private final Set<Position> foundWordPositions = new HashSet<>();
     private final VBox infoPanel = new VBox();
     private final TextArea movesTextArea = new TextArea();
-    private final BoardContent boardContent = new BoardContent();
+
     /**
      * Constructs a WSBoard with the given model.
      *
      * @param wsModel the model for the word search game
      */
-
     public WSBoard(WSModel wsModel) {
         this.wsModel = wsModel;
         this.buildGUI();
@@ -51,29 +47,33 @@ public class WSBoard extends GridPane implements WSView {
     /**
      * Builds the user interface for the word search game.
      */
-
     private void buildGUI() {
         assert (this.wsModel != null);
 
         EventHandler<ActionEvent> actionEventHandler = event -> {
             Button button = (Button) event.getSource();
-            handelButtonAction(button);
+            handleButtonAction(button);
         };
 
         for (int line = 0; line < this.wsModel.nLines(); line++) {
             for (int col = 0; col < this.wsModel.nCols(); col++) {
                 String textForButton = this.wsModel.textInPosition(new Position(line, col));
                 Button button = new Button(textForButton);
+                button.setFont(Font.font(18));
                 button.setOnAction(actionEventHandler);
                 button.setMinWidth(SQUARE_SIZE);
                 button.setMinHeight(SQUARE_SIZE);
+                button.setStyle("-fx-background-color: #FFFFFF;");
                 this.add(button, col, line); // add button to GridPane
             }
         }
+        this.setPadding(new Insets(10));
+        this.setHgap(5);
+        this.setVgap(5);
         this.requestFocus();
     }
 
-    private void handelButtonAction(Button button){
+    private void handleButtonAction(Button button) {
         Position buttonPosition = new Position(getRowIndex(button), getColumnIndex(button));
         Background background = button.getBackground();
         boolean isYellow = background != null && background.getFills().stream()
@@ -90,19 +90,17 @@ public class WSBoard extends GridPane implements WSView {
 
             if (previousButton.get() != null) {
                 Position previousButtonPosition = new Position(getRowIndex(previousButton.get()), getColumnIndex(previousButton.get()));
-                    String stylePrevious = foundWordPositions.contains(previousButtonPosition) ? "-fx-background-color: #00D100" :"";
-                    previousButton.get().setStyle(stylePrevious);
-                    String styleCurrent = foundWordPositions.contains(buttonPosition) ? "-fx-background-color: #00D100" :"";
-                    button.setStyle(styleCurrent);
+                String stylePrevious = foundWordPositions.contains(previousButtonPosition) ? "-fx-background-color: #00D100" : "";
+                previousButton.get().setStyle(stylePrevious);
+                String styleCurrent = foundWordPositions.contains(buttonPosition) ? "-fx-background-color: #00D100" : "";
+                button.setStyle(styleCurrent);
 
                 previousButton.set(null);
-            }else{
+            } else {
                 previousButton.set(button);
             }
         }
     }
-
-
 
     /**
      * Sets up the info side pane and adds it to the main layout.
@@ -112,6 +110,8 @@ public class WSBoard extends GridPane implements WSView {
         infoPanel.setSpacing(10);
         infoPanel.getChildren().add(movesTextArea); // Add the label to the info panel
         movesTextArea.setDisable(true);
+        movesTextArea.setStyle("-fx-opacity: 1; -fx-font-size: 16px;");
+        movesTextArea.setPrefHeight(300);
     }
 
     /**
@@ -149,12 +149,11 @@ public class WSBoard extends GridPane implements WSView {
                 continue;
             }
             button.setStyle("-fx-background-color: #00D100");
-            //button.setDisable(true);
             foundWordPositions.add(p);
         }
         if (this.wsModel.allWordsWereFound()) {
             FileReadWrite readWrite = new FileReadWrite();
-            readWrite.writeFile(getWordsFound(),"score",true);
+            readWrite.writeFile(getWordsFound(), "score", true);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Finish");
             alert.setHeaderText("Congratulations!");
@@ -164,7 +163,7 @@ public class WSBoard extends GridPane implements WSView {
         }
     }
 
-    public String saveMovements(String board){
+    public String saveMovements(String board) {
         StringBuilder movements = new StringBuilder();
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -180,7 +179,7 @@ public class WSBoard extends GridPane implements WSView {
 
     public String getWordsFound() {
         StringBuilder sb = new StringBuilder();
-        List<String> solutions = boardContent.getSolutions().get("easy");
+        List<String> solutions = wsModel.getSolutions();
         Set<String> totalWords = new HashSet<>();
 
         LocalDateTime now = LocalDateTime.now();
@@ -194,7 +193,7 @@ public class WSBoard extends GridPane implements WSView {
         int totalWordsCount = totalWords.size();
         int foundWordsCount = wordsFound.size();
 
-        sb.append("Words found: " +"Time: "+ timestamp + "\n");
+        sb.append("Words found: " + "Time: " + timestamp + "\n");
         for (String word : wordsFound) {
             sb.append(word).append("\n");
         }
@@ -203,11 +202,6 @@ public class WSBoard extends GridPane implements WSView {
         sb.append(String.format("Total words found: %d/%d (%.2f%%) \n", foundWordsCount, totalWordsCount, percentage));
 
         return sb.toString();
-    }
-
-    @Override
-    public void updateInfoLabel(String text) {
-        movesTextArea.appendText(text + "\n");
     }
 
     /**
@@ -219,6 +213,12 @@ public class WSBoard extends GridPane implements WSView {
         HBox mainLayout = new HBox();
         mainLayout.getChildren().addAll(this, infoPanel); // Add GridPane and infoPanel to HBox
         mainLayout.setSpacing(10);
+        mainLayout.setPadding(new Insets(10));
         return mainLayout;
+    }
+
+    @Override
+    public void updateInfoLabel(String text) {
+        movesTextArea.appendText(text + "\n");
     }
 }
