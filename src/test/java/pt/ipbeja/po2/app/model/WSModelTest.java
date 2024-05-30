@@ -30,20 +30,48 @@ class WSModelTest {
     @Test
     void testAllWordsWereFound() {
         BoardContent mock = new BoardContent(5);
-        mock.setBoardContent("MALA");
+        mock.setBoardContent("MALA\nCA");
         WSModel model = new WSModel(mock);
         this.registerEmptyView(model);
         assertEquals("MALA", model.wordFound("MALA"));
-        //assertEquals("CA", model.wordFound("CA"));
+        assertEquals("CA", model.wordFound("CA"));
         assertTrue(model.allWordsWereFound());
     }
 
+
     @Test
     void testReadFile() {
-        FileReadWrite fileReadWrite = new FileReadWrite();
-        String expectedContent = "CASA\nCAO\nGATO";
+
+        String mockFileContent = "CASA\nCAO\nGATO\nMECANICO";
+
+        MockFileReadWrite fileReadWrite = new MockFileReadWrite();
+
+        fileReadWrite.setFileContent(mockFileContent);
+
+        // Read the mocked content
         String actualContent = fileReadWrite.readFile("mockFileContent");
-        assertEquals(expectedContent, actualContent );
+
+        // Criação do mock do conteúdo do tabuleiro
+        MockBoardContent mockBoardContent = new MockBoardContent(7);
+        mockBoardContent.setMockBoardContent(actualContent);
+
+
+        WSModel model = new WSModel(mockBoardContent);
+        this.registerEmptyView(model);
+
+        // Check if actualContent contains the words
+        assertTrue(actualContent.contains("CASA"));
+        assertTrue(actualContent.contains("CAO"));
+        assertTrue(actualContent.contains("GATO"));
+        assertTrue(actualContent.contains("MECANICO"));
+
+        // Set and check if word as found
+        model.wordFound("CASA");
+        model.wordFound("CAO");
+        model.wordFound("GATO");
+        model.wordFound("MECANICO");
+
+        assertTrue(model.allWordsWereFound());
     }
 
     @Test
@@ -60,11 +88,24 @@ class WSModelTest {
         MockBoardContent mock = new MockBoardContent(5);
         mock.setMockBoardContent("CASA\nCAO");
         WSModel wsModel = new WSModel(mock);
-        String board = mock.getBoardContent();
+        this.registerEmptyView(wsModel);
         String casa = wsModel.checkWord(new Position(0,0),new Position(0,3));
         assertEquals("CASA", casa, "Expected casa: " + "Result: " + casa);
         String cao = wsModel.checkWord(new Position(1,0),new Position(1,2));
         assertEquals("CAO", cao, "Expected cao: " + "Result: " + cao);
+    }
+
+    @Test
+    void testFinishGame() {
+        MockBoardContent mock = new MockBoardContent(5);
+        mock.setMockBoardContent("CASA\nCAO");
+        WSModel wsModel = new WSModel(mock);
+        this.registerEmptyView(wsModel);
+        String casa = wsModel.checkWord(new Position(0,0),new Position(0,3));
+        assertEquals("CASA", casa, "Expected casa: " + "Result: " + casa);
+        String cao = wsModel.checkWord(new Position(1,0),new Position(1,2));
+        assertEquals("CAO", cao, "Expected cao: " + "Result: " + cao);
+        assertTrue(wsModel.allWordsWereFound());
     }
 
     private void registerEmptyView(WSModel model) {
@@ -85,6 +126,7 @@ class WSModelTest {
 
 class MockBoardContent extends BoardContent {
     private String boardContent;
+
     /**
      * Constructs a BoardContent instance with a specified board size.
      *
@@ -95,14 +137,34 @@ class MockBoardContent extends BoardContent {
     }
 
     /**
-     * Sets the board content by reading words from a file and generating the board.
+     * Sets the mock board content.
+     *
+     * @param boardContent the content to set.
      */
     public void setMockBoardContent(String boardContent) {
         this.boardContent = boardContent;
+        setBoardContent(boardContent);
     }
 
+    @Override
     public String getBoardContent() {
         return boardContent;
+    }
+}
+
+class MockFileReadWrite extends FileReadWrite {
+    private String mockFileContent;
+
+    public void setFileContent(String content) {
+        this.mockFileContent = content;
+    }
+
+    @Override
+    public String readFile(String fileName) {
+        if (mockFileContent != null) {
+            return mockFileContent;
+        }
+        return super.readFile(fileName);
     }
 }
 

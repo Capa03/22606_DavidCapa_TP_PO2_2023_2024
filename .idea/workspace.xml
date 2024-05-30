@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Optimized and changed some ui styles">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mockFileContent.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/movements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/score.txt" afterDir="false" />
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Writed some unit tests and created MockBoardContent Class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/FileReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/FileReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mockFileContent.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mockFileContent.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/score.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/score.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ipbeja/app/model/WSModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/pt/ipbeja/po2/app/model/WSModelTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pt/ipbeja/po2/app/model/WSModelTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/pt/ipbeja/po2/app/model/WSModelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pt/ipbeja/po2/app/model/WSModelTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,31 +67,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.StartWordSearch.executor": "Debug",
-    "JUnit.WSModelTest.executor": "Run",
-    "JUnit.WSModelTest.testAllWordsWereFound.executor": "Run",
-    "JUnit.WSModelTest.testCheckWord.executor": "Run",
-    "JUnit.WSModelTest.testPlayedInPosition.executor": "Run",
-    "JUnit.WSModelTest.testReadFile.executor": "Run",
-    "JUnit.WSModelTest.testWordFound.executor": "Run",
-    "JUnit.WSModelTest.testWriteFile.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "9-unit-tests",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/capa/Desktop/PO2/Projeto/PO2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.StartWordSearch.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.testAllWordsWereFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.testCheckWord.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.testPlayedInPosition.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.testReadFile.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.testWordFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WSModelTest.testWriteFile.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;9-unit-tests&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/capa/Desktop/PO2/Projeto/PO2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="JUnit.WSModelTest">
+    <configuration name="StartWordSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pt.ipbeja.app.ui.StartWordSearch" />
+      <module name="22606_DavidCapa_TP_PO2_2023_2024" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pt.ipbeja.app.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WSModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="22606_DavidCapa_TP_PO2_2023_2024" />
       <extension name="coverage">
@@ -163,29 +168,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WSModelTest.testWriteFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="22606_DavidCapa_TP_PO2_2023_2024" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pt.ipbeja.po2.app.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pt.ipbeja.po2.app.model" />
-      <option name="MAIN_CLASS_NAME" value="pt.ipbeja.po2.app.model.WSModelTest" />
-      <option name="METHOD_NAME" value="testWriteFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.WSModelTest" />
+        <item itemvalue="JUnit.WSModelTest.testReadFile" />
+        <item itemvalue="Application.StartWordSearch" />
         <item itemvalue="JUnit.WSModelTest.testCheckWord" />
         <item itemvalue="JUnit.WSModelTest.testPlayedInPosition" />
-        <item itemvalue="JUnit.WSModelTest.testWriteFile" />
-        <item itemvalue="JUnit.WSModelTest.testReadFile" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +215,9 @@
       <workItem from="1716410230250" duration="374000" />
       <workItem from="1716410669095" duration="5815000" />
       <workItem from="1716503670603" duration="4170000" />
-      <workItem from="1716981439312" duration="2826000" />
+      <workItem from="1716981439312" duration="2914000" />
+      <workItem from="1716992192018" duration="1223000" />
+      <workItem from="1717088105231" duration="4809000" />
     </task>
     <task id="LOCAL-00001" summary="Files added">
       <option name="closed" value="true" />
@@ -364,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716661479613</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Writed some unit tests and created MockBoardContent Class">
+      <option name="closed" value="true" />
+      <created>1716984344274</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716984344275</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,7 +410,9 @@
     <MESSAGE value="Implemented Percentage and save file words found" />
     <MESSAGE value="Bug Fixed UI Button" />
     <MESSAGE value="Solved Solutions Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solved Solutions Bug" />
+    <MESSAGE value="Writed some nit tests and created MockBoardContent Class" />
+    <MESSAGE value="Writed some unit tests and created MockBoardContent Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Writed some unit tests and created MockBoardContent Class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

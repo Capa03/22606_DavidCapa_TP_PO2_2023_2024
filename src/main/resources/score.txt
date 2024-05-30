@@ -276,3 +276,12 @@ CARRO
 CASA
 Total words found: 4/4 (100,00%) 
 
+Words found: Time: 2024-05-29 15:27:01
+CASA
+CARRO
+COLHER
+CABRA
+GIRAFA
+CAO
+Total words found: 6/6 (100,00%) 
+
