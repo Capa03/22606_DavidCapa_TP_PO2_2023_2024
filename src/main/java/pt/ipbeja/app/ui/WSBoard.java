@@ -20,8 +20,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Game interface. Just a GridPane of buttons. No images. No menu.
- * Displays the game board and an info panel beside it.
- *
+ * @author David Capa
  * @version 2024/04/14
  */
 public class WSBoard extends GridPane implements WSView {
@@ -34,9 +33,7 @@ public class WSBoard extends GridPane implements WSView {
     private final TextArea movesTextArea = new TextArea();
 
     /**
-     * Constructs a WSBoard with the given model.
-     *
-     * @param wsModel the model for the word search game
+     * Create a board with letters
      */
     public WSBoard(WSModel wsModel) {
         this.wsModel = wsModel;
@@ -45,7 +42,7 @@ public class WSBoard extends GridPane implements WSView {
     }
 
     /**
-     * Builds the user interface for the word search game.
+     * Build the interface
      */
     private void buildGUI() {
         assert (this.wsModel != null);
@@ -115,11 +112,10 @@ public class WSBoard extends GridPane implements WSView {
     }
 
     /**
-     * Retrieves the button at the specified position in the grid.
-     *
-     * @param line the row index of the button
-     * @param col  the column index of the button
-     * @return the button at the specified position
+     * Can be optimized using an additional matrix with all the buttons
+     * @param line line of label in board
+     * @param col column of label in board
+     * @return the button at line, col
      */
     public Button getButton(int line, int col) {
         ObservableList<Node> children = this.getChildren();
@@ -136,9 +132,9 @@ public class WSBoard extends GridPane implements WSView {
     }
 
     /**
-     * Updates the game board and info panel based on the message received from the model.
+     * Simply updates the text for the buttons in the received positions
      *
-     * @param messageToUI the message containing the updated positions and game state
+     * @param messageToUI the WS model
      */
     @Override
     public void update(MessageToUI messageToUI) {

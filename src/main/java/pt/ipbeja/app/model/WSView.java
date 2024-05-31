@@ -2,7 +2,7 @@ package pt.ipbeja.app.model;
 
 /**
  * View
- * @author anonymized
+ * @author David Capa
  * @version 2024/04/14
  */
 public interface WSView {

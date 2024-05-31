@@ -2,7 +2,7 @@ package pt.ipbeja.app.model;
 /**
  * Position in the board
  *
- * @author anonymized
+ * @author David Capa
  * @version 2024/04/14
  */
 public record Position(int line, int col) {

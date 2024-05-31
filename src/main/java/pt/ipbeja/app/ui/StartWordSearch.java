@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 /**
  * Start a game with a hardcoded board
- * @author anonymized
+ * @author David Capa
  * @version 2024/04/14
  */
 public class StartWordSearch extends Application {
