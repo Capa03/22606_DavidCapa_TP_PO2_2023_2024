@@ -95,7 +95,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.StartWordSearch">
+  <component name="RunManager" selected="JUnit.WSModelTest">
     <configuration name="StartWordSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pt.ipbeja.app.ui.StartWordSearch" />
       <module name="22606_DavidCapa_TP_PO2_2023_2024" />
@@ -140,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WSModelTest.testPlayedInPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WSModelTest.testFinishGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="22606_DavidCapa_TP_PO2_2023_2024" />
       <extension name="coverage">
         <pattern>
@@ -150,7 +150,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="pt.ipbeja.po2.app.model" />
       <option name="MAIN_CLASS_NAME" value="pt.ipbeja.po2.app.model.WSModelTest" />
-      <option name="METHOD_NAME" value="testPlayedInPosition" />
+      <option name="METHOD_NAME" value="testFinishGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -174,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.StartWordSearch" />
         <item itemvalue="JUnit.WSModelTest" />
+        <item itemvalue="JUnit.WSModelTest.testFinishGame" />
+        <item itemvalue="Application.StartWordSearch" />
         <item itemvalue="JUnit.WSModelTest.testReadFile" />
         <item itemvalue="JUnit.WSModelTest.testCheckWord" />
-        <item itemvalue="JUnit.WSModelTest.testPlayedInPosition" />
       </list>
     </recent_temporary>
   </component>

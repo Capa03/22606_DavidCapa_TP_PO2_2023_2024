@@ -102,9 +102,9 @@ class WSModelTest {
         WSModel wsModel = new WSModel(mock);
         this.registerEmptyView(wsModel);
         String casa = wsModel.checkWord(new Position(0,0),new Position(0,3));
-        assertEquals("CASA", casa, "Expected casa: " + "Result: " + casa);
+        assertEquals("CASA", wsModel.wordFound(casa), "Expected casa: " + "Result: " + casa);
         String cao = wsModel.checkWord(new Position(1,0),new Position(1,2));
-        assertEquals("CAO", cao, "Expected cao: " + "Result: " + cao);
+        assertEquals("CAO", wsModel.wordFound(cao), "Expected cao: " + "Result: " + cao);
         assertTrue(wsModel.allWordsWereFound());
     }
 
