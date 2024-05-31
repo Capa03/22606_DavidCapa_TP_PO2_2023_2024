@@ -2,6 +2,9 @@
 
 Autor: David Capa
 
+####Repositorio GitHub:
+https://github.com/Capa03/PO2
+
 #### Issues:
 https://github.com/Capa03/PO2/issues?q=is%3Aissue+is%3Aclosed
 
