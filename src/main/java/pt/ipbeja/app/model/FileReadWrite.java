@@ -2,6 +2,12 @@ package pt.ipbeja.app.model;
 
 import java.io.*;
 
+/**
+ * FileReadWrite class
+ * @author David Capa
+ * @version 2024/04/14
+ */
+
 public class FileReadWrite {
 
     public FileReadWrite() {}
@@ -11,13 +17,13 @@ public class FileReadWrite {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/"+fileName+".txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Trim the line and add it to the formatted content with a newline character
+
                 formattedContent.append(line.trim()).append("\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        // Remove the trailing newline character if it exists
+
         if (!formattedContent.isEmpty()) {
             formattedContent.setLength(formattedContent.length() - 1);
         }

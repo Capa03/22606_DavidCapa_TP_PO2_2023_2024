@@ -4,8 +4,7 @@ import java.util.*;
 
 /**
  * Game model
- * Handles the logic and state of the word search game.
- *
+ * @author David Capa
  * @version 2024/04/14
  */
 public class WSModel {
@@ -20,11 +19,7 @@ public class WSModel {
     private final BoardContent boardContent;
     private List<Position> positions;
 
-    /**
-     * Constructs a WSModel instance with a specified BoardContent.
-     *
-     * @param boardContent the board content to use for the game.
-     */
+
     public WSModel(BoardContent boardContent) {
         this.boardContent = boardContent;
         this.positions = new ArrayList<>();
@@ -38,36 +33,23 @@ public class WSModel {
         }
     }
 
-    /**
-     * Returns the number of lines in the board.
-     *
-     * @return the number of lines.
-     */
+
     public int nLines() {
         return this.lettersGrid.size();
     }
 
-    /**
-     * Returns the number of columns in the board.
-     *
-     * @return the number of columns.
-     */
+
     public int nCols() {
         return this.lettersGrid.get(0).size();
     }
 
-    /**
-     * Registers a view to the model.
-     *
-     * @param wsView the view to register.
-     */
+
     public void registerView(WSView wsView) {
         this.wsView = wsView;
     }
 
     /**
      * Communicates the selected position to the model.
-     *
      * @param currentPosition the user's selected position.
      */
     public void positionSelected(Position currentPosition) {
@@ -94,7 +76,6 @@ public class WSModel {
 
     /**
      * Checks the word in the given interval position.
-     *
      * @param previousPosition the user's first selected position.
      * @param currentPosition  the user's second selected position.
      * @return the word formed by the interval.
@@ -120,7 +101,6 @@ public class WSModel {
 
     /**
      * Returns the list of words found by the player.
-     *
      * @return a list of words found.
      */
     public List<String> getWordsFound() {
@@ -129,7 +109,6 @@ public class WSModel {
 
     /**
      * Returns the list of solution words.
-     *
      * @return a list of solution words.
      */
     public List<String> getSolutions() {
@@ -137,19 +116,16 @@ public class WSModel {
     }
 
     /**
-     * Check if the word is in the board.
-     *
-     * @param word the word to check.
-     * @return true if the word is in the board.
+     * Check if the word is in the board
+     * @param word
+     * @return true if the word is in the board
      */
     public String wordFound(String word) {
         List<String> solutions = getSolutions();
-
         // Check each solution
         for (String solution : solutions) {
-            // Split the solution into individual words
             String[] words = solution.split("\\s+");
-            // Check each word in the solution
+
             for (String w : words) {
                 if (w.equals(word)) {
                     this.wordsFound.add(word);
@@ -166,19 +142,17 @@ public class WSModel {
     }
 
     /**
-     * Returns the text at a given position.
-     *
-     * @param position the position to get the text from.
-     * @return the text at the position.
+     * Get the text in a position
+     * @param position  position
+     * @return  the text in the position
      */
     public String textInPosition(Position position) {
         return this.lettersGrid.get(position.line()).get(position.col());
     }
 
     /**
-     * Checks if all words have been found.
-     *
-     * @return true if all words have been found.
+     * Check if all words were found
+     * @return  true if all words were found
      */
     public boolean allWordsWereFound() {
         List<String> solutions = getSolutions();
@@ -192,10 +166,9 @@ public class WSModel {
     }
 
     /**
-     * Check if the word with wildcard is in the board.
-     *
-     * @param word the word to check with wildcard.
-     * @return true if the word with wildcard is in the board.
+     * Check if the word with wildcard is in the board
+     * @param word
+     * @return  true if the word with wildcard is in the board
      */
     public String wordWithWildcardFound(String word) {
         // TODO implement this method

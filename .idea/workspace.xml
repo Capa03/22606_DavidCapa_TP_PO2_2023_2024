@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Writed some unit tests and created MockBoardContent Class">
+    <list default="true" id="9b46e541-6637-4d2c-a682-c016ca32d08f" name="Changes" comment="Writed some unit tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mockFileContent.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mockFileContent.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/score.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/score.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pt/ipbeja/po2/app/model/WSModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/BoardContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/FileReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/FileReadWrite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/MessageToUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/MessageToUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/model/WSModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ipbeja/app/ui/WSMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +95,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.WSModelTest">
+  <component name="RunManager" selected="Application.StartWordSearch">
     <configuration name="StartWordSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pt.ipbeja.app.ui.StartWordSearch" />
       <module name="22606_DavidCapa_TP_PO2_2023_2024" />
@@ -170,9 +174,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StartWordSearch" />
         <item itemvalue="JUnit.WSModelTest" />
         <item itemvalue="JUnit.WSModelTest.testReadFile" />
-        <item itemvalue="Application.StartWordSearch" />
         <item itemvalue="JUnit.WSModelTest.testCheckWord" />
         <item itemvalue="JUnit.WSModelTest.testPlayedInPosition" />
       </list>
@@ -218,6 +222,8 @@
       <workItem from="1716981439312" duration="2914000" />
       <workItem from="1716992192018" duration="1223000" />
       <workItem from="1717088105231" duration="4809000" />
+      <workItem from="1717110073815" duration="198000" />
+      <workItem from="1717164600091" duration="995000" />
     </task>
     <task id="LOCAL-00001" summary="Files added">
       <option name="closed" value="true" />
@@ -363,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716984344275</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Writed some unit tests">
+      <option name="closed" value="true" />
+      <created>1717110103245</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1717110103246</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +426,8 @@
     <MESSAGE value="Solved Solutions Bug" />
     <MESSAGE value="Writed some nit tests and created MockBoardContent Class" />
     <MESSAGE value="Writed some unit tests and created MockBoardContent Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Writed some unit tests and created MockBoardContent Class" />
+    <MESSAGE value="Writed some unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Writed some unit tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

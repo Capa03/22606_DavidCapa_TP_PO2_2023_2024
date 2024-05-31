@@ -5,7 +5,10 @@ import java.util.*;
 /**
  * The BoardContent class represents a board for placing words.
  * It generates a board of a specified size, places words from a file, and fills the remaining cells with random letters.
+ * @author David Capa
+ * @version 2024/04/14
  */
+
 public class BoardContent {
 
     private String boardContent;

@@ -10,6 +10,12 @@ import pt.ipbeja.app.model.BoardContent;
 import pt.ipbeja.app.model.FileReadWrite;
 import pt.ipbeja.app.model.WSModel;
 
+/**
+ * The Menu class represents the start menu.
+ * @author David Capa
+ * @version 2024/04/14
+ */
+
 public class WSMenu extends GridPane {
     private Stage stage;
     private TextField inputField;
@@ -72,23 +78,21 @@ public class WSMenu extends GridPane {
      */
     private void buttonSetup() {
         Button buttonStart = new Button("Start");
-        Button buttonLeaderBoard = new Button("Leaderboard");
+
         Button buttonQuit = new Button("Quit");
 
         buttonStart.setPrefSize(200, 50);
-        buttonLeaderBoard.setPrefSize(200, 50);
         buttonQuit.setPrefSize(200, 50);
 
         buttonStart.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-        buttonLeaderBoard.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+
         buttonQuit.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
 
         buttonStart.setOnAction(event -> showSizeInputDialog());
         buttonQuit.setOnAction(event -> showQuitConfirmation(false));
 
         this.add(buttonStart, 0, 0);
-        this.add(buttonLeaderBoard, 0, 1);
-        this.add(buttonQuit, 0, 2);
+        this.add(buttonQuit, 0, 1);
     }
 
     /**
@@ -134,7 +138,6 @@ public class WSMenu extends GridPane {
         gameMenu.getItems().addAll(saveMovements, restartMenuItem, quitMenuItem);
         menuBar.getMenus().add(gameMenu);
 
-        // Create a BorderPane to hold the menu bar and the game content
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(menuBar);
         borderPane.setCenter(wsBoard.getMainLayout());
