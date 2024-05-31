@@ -2,7 +2,7 @@
 
 Autor: David Capa
 
-####Repositorio GitHub:
+#### Repositorio GitHub:
 https://github.com/Capa03/PO2
 
 #### Issues:
